@@ -41,8 +41,9 @@ struct ContentView: View {
 //    @EnvironmentObject var settings: UserSettings
 
     var body: some View {
-        
+        NavigationView {
         VStack {
+            
             ScrollView {
                 
                 Text("UniTrade")
@@ -67,9 +68,7 @@ struct ContentView: View {
                 }                .padding(10)
                 .padding(.bottom, 10)
             }
-            
-                NavigationView {
-                           VStack {
+                VStack {
                                Spacer()
                                Spacer() // Create space at the top
                                HStack {
@@ -88,7 +87,7 @@ struct ContentView: View {
                                            .padding(.leading, 5)
                                            .padding(.trailing, 5)
                                    }
-                                   NavigationLink(destination: Text("Create")) {
+                                   NavigationLink(destination: Text("Post")) {
                                        Image(systemName: "plus.circle")
                                            .font(.system(size: 40))
                                            .padding(.top, 8)
@@ -102,7 +101,7 @@ struct ContentView: View {
                                            .padding(.leading, 5)
                                            .padding(.trailing, 5)
                                    }
-                                   NavigationLink(destination: Text("Profile")) {
+                                   NavigationLink(destination: AccountView()) {
                                        Image(systemName: "person.fill")
                                            .font(.system(size: 40))
                                            .padding(.top, 8)
@@ -118,6 +117,7 @@ struct ContentView: View {
                     
                 
             }
+                .navigationBarBackButtonHidden(true)
             .frame(width: 350, height: 37)
         }
         

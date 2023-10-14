@@ -32,6 +32,4 @@ struct PaymentOptions: View {
                     }
             }
         }
-#Preview {
-    PaymentOptions()
-}
+
