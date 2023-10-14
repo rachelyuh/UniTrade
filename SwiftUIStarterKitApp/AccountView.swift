@@ -21,15 +21,16 @@ struct AccountView: View {
     var body: some View {
         GeometryReader { g in
             VStack {
+                HStack {
                 Image("italy")
                     .resizable()
                     .frame(width: 100, height: 100)
                     .background(Color.yellow)
                     .clipShape(Circle())
                     .padding(.bottom, 10)
-                Text("John Appleseed")
+                Text("Bob Appleseed")
                     .font(.system(size: 20))
-                    
+                }
                 Form {
                     
                     Section(header: Text("Payment Settings")) {
@@ -84,3 +85,9 @@ struct AccountView: View {
     }
  }
 
+
+struct Previews_AccountView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountView()
+    }
+}
