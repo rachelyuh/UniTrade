@@ -24,7 +24,7 @@ struct WriteView: View{
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                viewModel.pushNewValue(value: content)
+                //viewModel.readValue(usaname: content)
             } label: {
                 Text("Push")
                     .padding()

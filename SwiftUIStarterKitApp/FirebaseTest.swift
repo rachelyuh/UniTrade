@@ -2,7 +2,7 @@
 //  FirebaseTest.swift
 //  SwiftUIStarterKitApp
 //
-//  Created by Ben Kim on 10/13/23.
+//  Created by Matthew Lu on 10/13/23.
 //  Copyright © 2023 NexThings. All rights reserved.
 //
 
@@ -14,8 +14,11 @@ class FirebaseTest: ObservableObject{
     
     private let ref = Database.database().reference()
     
-    func pushNewValue(value: String){
-        ref.setValue(value)
+    func readValue(value: String){
+        //self.ref.child("user").setValue(value)
+        self.ref.child("user").child(value).child("name").setValue("Kim")
+        
+        
     }
     
 }

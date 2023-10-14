@@ -137,7 +137,11 @@ struct ActivitiesContentView: View {
                     Button(action: {
                         self.settings.loggedIn = false
                     }) {
-                        Text("Log Out")
+                        NavigationLink(destination: LogInView()) {
+                            
+                                           Text("Log Out")
+                                               .foregroundColor(.blue)
+                                       }
                     })
             }.sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
@@ -276,5 +280,11 @@ struct ActivityResourceItems: View {
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .cornerRadius(10)
         }
+    }
+}
+
+struct Previews_ActivitiesContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Hello, World!")
     }
 }

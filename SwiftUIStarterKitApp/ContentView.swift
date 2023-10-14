@@ -20,7 +20,7 @@ struct StartView: View {
     
     var body: some View {
         if settings.loggedIn {
-            return AnyView(TabbarView())
+            return AnyView(LogInView())
         }else {
             return AnyView(ContentView())
         }
@@ -133,7 +133,8 @@ struct OnboardingView: View {
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView()
+        ContentView()
     }
 }
 #endif
+
