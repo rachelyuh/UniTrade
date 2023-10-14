@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		17244EBE2353DC4F00D31F7E /* UIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */; };
-		287368AD2ADA282F0042A486 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 287368AC2ADA282F0042A486 /* GoogleService-Info.plist */; };
 		287368B02ADA287B0042A486 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 287368AF2ADA287B0042A486 /* FirebaseDatabase */; };
 		287368B22ADA287B0042A486 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 287368B12ADA287B0042A486 /* FirebaseDatabaseSwift */; };
+		8DCF779B2ADA33460024B1D2 /* CreateListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF779A2ADA33460024B1D2 /* CreateListing.swift */; };
+		8DCF779D2ADA6BE40024B1D2 /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF779C2ADA6BE40024B1D2 /* PaymentOptions.swift */; };
+		8DCF77A12ADA9C0C0024B1D2 /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF77A02ADA9C0C0024B1D2 /* PHPicker.swift */; };
 		F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */; };
 		F5143EB22301F435008D8C89 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5143EB12301F435008D8C89 /* BlurView.swift */; };
 		F51B590722F4CBD300660704 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51B590622F4CBD300660704 /* SignUpView.swift */; };
@@ -49,7 +51,9 @@
 
 /* Begin PBXFileReference section */
 		17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewController.swift; sourceTree = "<group>"; };
-		287368AC2ADA282F0042A486 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8DCF779A2ADA33460024B1D2 /* CreateListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListing.swift; sourceTree = "<group>"; };
+		8DCF779C2ADA6BE40024B1D2 /* PaymentOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptions.swift; sourceTree = "<group>"; };
+		8DCF77A02ADA9C0C0024B1D2 /* PHPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
 		F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCartView.swift; sourceTree = "<group>"; };
 		F5143EB12301F435008D8C89 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		F51B590622F4CBD300660704 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -133,15 +137,17 @@
 				F553995622F4998F00872F1B /* LogInView.swift */,
 				F52AA7A622F4883A0051F943 /* TabBarView.swift */,
 				F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */,
+				8DCF77A02ADA9C0C0024B1D2 /* PHPicker.swift */,
 				F57143C423008A27005F4724 /* PlaceDetailView.swift */,
 				F5143EB12301F435008D8C89 /* BlurView.swift */,
 				F553B7E722FCA19400314585 /* AccountView.swift */,
+				8DCF779A2ADA33460024B1D2 /* CreateListing.swift */,
+				8DCF779C2ADA6BE40024B1D2 /* PaymentOptions.swift */,
 				F552983422F8BBAE00C07997 /* ActivitiesMockStore.swift */,
 				F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */,
 				F542B64E22F2DBF300E490A1 /* Assets.xcassets */,
 				F542B65322F2DBF300E490A1 /* LaunchScreen.storyboard */,
 				F542B65622F2DBF300E490A1 /* Info.plist */,
-				287368AC2ADA282F0042A486 /* GoogleService-Info.plist */,
 				F542B65022F2DBF300E490A1 /* Preview Content */,
 			);
 			path = SwiftUIStarterKitApp;
@@ -285,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F542B65522F2DBF300E490A1 /* LaunchScreen.storyboard in Resources */,
-				287368AD2ADA282F0042A486 /* GoogleService-Info.plist in Resources */,
 				F542B65222F2DBF300E490A1 /* Preview Assets.xcassets in Resources */,
 				F542B64F22F2DBF300E490A1 /* Assets.xcassets in Resources */,
 			);
@@ -322,9 +327,12 @@
 				F52AA7A722F4883A0051F943 /* TabBarView.swift in Sources */,
 				F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */,
 				F57143C523008A28005F4724 /* PlaceDetailView.swift in Sources */,
+				8DCF779D2ADA6BE40024B1D2 /* PaymentOptions.swift in Sources */,
 				F51B590722F4CBD300660704 /* SignUpView.swift in Sources */,
 				F553B7E822FCA19400314585 /* AccountView.swift in Sources */,
+				8DCF779B2ADA33460024B1D2 /* CreateListing.swift in Sources */,
 				F542B64D22F2DBF200E490A1 /* ContentView.swift in Sources */,
+				8DCF77A12ADA9C0C0024B1D2 /* PHPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -475,7 +483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -494,6 +502,7 @@
 				DEVELOPMENT_TEAM = Q98J247HTL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIStarterKitApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,6 +523,7 @@
 				DEVELOPMENT_TEAM = Q98J247HTL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIStarterKitApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

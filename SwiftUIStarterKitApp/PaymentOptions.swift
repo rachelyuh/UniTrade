@@ -8,12 +8,30 @@
 
 import SwiftUI
 
-struct PaymentOptions: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct Option: Identifiable {
+    let id = UUID()
+    let name: String
 }
 
+struct PaymentOptions: View {
+    @State var paymentMethods = [
+            Option(name: "Venmo"),
+            Option(name: "Zelle"),
+            Option(name: "PayPal"),
+            Option(name: "ApplePay"),
+            Option(name: "Cash")
+        ]
+
+    @State var selectedPayments = Set<UUID>()
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                List(self.paymentMethods, selection: self.$selectedPayments) { option in Text(option.name)}
+                        }
+                    }
+            }
+        }
 #Preview {
     PaymentOptions()
 }
