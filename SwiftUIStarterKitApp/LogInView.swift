@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct LogInView: View {
     @EnvironmentObject var settings: UserSettings
     
@@ -77,6 +78,11 @@ struct LogInView: View {
             .padding(.bottom, 90)
             }
     }
+}
+
+
+#Preview {
+    LogInView()
 }
 
 
