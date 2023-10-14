@@ -18,11 +18,8 @@ struct LogInView: View {
     GeometryReader { geometry in
             VStack (alignment: .center){
                 HStack {
-                    Image("2")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    Text("SwiftUI Starter")
-                        .font(.system(size: 12))
+                    Text("UniTrade")
+                        .font(.system(size: 40, weight: .bold))
                         
                 }.padding(.top, 30)
                 .padding(.bottom, 10)
@@ -83,3 +80,9 @@ struct LogInView: View {
 
 
 
+
+struct Previews_LogInView_Previews: PreviewProvider {
+    static var previews: some View {
+        LogInView()
+    }
+}

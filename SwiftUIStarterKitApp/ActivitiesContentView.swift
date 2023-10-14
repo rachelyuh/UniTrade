@@ -278,3 +278,9 @@ struct ActivityResourceItems: View {
         }
     }
 }
+
+struct Previews_ActivitiesContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Hello, World!")
+    }
+}

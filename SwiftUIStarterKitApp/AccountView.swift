@@ -91,3 +91,9 @@ struct Previews_AccountView_Previews: PreviewProvider {
         AccountView()
     }
 }
+
+struct Previews_AccountView_Previews_2: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
