@@ -13,81 +13,155 @@ struct AccountView: View {
     @State var locationUsage: Bool = false
     @State var username: String = "James"
     @State var selectedCurrency: Int = 0
-    @State var currencyArray: [String] = ["$ US Dollar", "£ GBP", "€ Euro"]
+
+    let items = Array(1...12) // Example data
+
     
-    @State var selectedPaymentMethod: Int = 1
-    @State var paymentMethodArray: [String] = ["Paypal", "Credit/Debit Card", "Bitcoin"]
+    
+    
+ 
+    
     
     var body: some View {
-        GeometryReader { g in
+        ScrollView {
             VStack {
+                Spacer()
+                Spacer()
+                Spacer()
                 HStack {
-                Image("italy")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .background(Color.yellow)
-                    .clipShape(Circle())
-                    .padding(.bottom, 10)
-                Text("Bob Appleseed")
-                    .font(.system(size: 20))
-                }
-                Form {
-                    
-                    Section(header: Text("Payment Settings")) {
-                        Picker(selection: self.$selectedCurrency, label: Text("Currency")) {
-                                         ForEach(0 ..< self.currencyArray.count) {
-                                                  Text(self.currencyArray[$0]).tag($0)
-                                            }
-                        }
-                        
-                        Picker(selection: self.$selectedPaymentMethod, label: Text("Payment Method")) {
-                                  ForEach(0 ..< self.paymentMethodArray.count) {
-                                       Text(self.paymentMethodArray[$0]).tag($0)
-                                     }
-                        }
-                        Button(action: {
-                            print("Button tapped")
-                            
-                        }) {
-                            
-                            if (self.paymentMethodArray[self.selectedPaymentMethod]) == "Credit/Debit Card" {
-                                Text("Add a Credit/Debit Card to your account")
+                    Image("italy")
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                        .background(Color.yellow)
+                        .clipShape(Circle())
+                        .padding(.bottom, 10)
+                        .padding(.leading, 30)
+                    VStack {
+                        Text("Bob Appleseed")
+                            .font(.system(size: 30))
+                            .padding(.leading, 10)
+                            .padding(.top, 10)
+                        Text("@bobappleseed")
+                            .padding(.leading, 0)
+                            .padding(.bottom, 1)
+                        HStack {
+                            Button("Edit Profile") {
                                 
-                            } else {
-                                Text("Connect \(self.paymentMethodArray[self.selectedPaymentMethod]) to your account")
                             }
+                            .frame(width: 100, height:20)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            Button("Share Profile") {
+                                
+                            }
+                            .frame(width: 100, height:20)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+
                         }
 
                     }
-                    Section(header: Text("Personal Information")) {
-                       NavigationLink(destination: Text("Profile Info")) {
-                            Text("Profile Information")
-                        }
-                       
-                        NavigationLink(destination: Text("Billing Info")) {
-                            Text("Billing Information")
-                        }
-                    }
-                    
-                    Section(footer: Text("Allow push notifications to get latest travel and equipment deals")) {
-                        Toggle(isOn: self.$locationUsage) {
-                              Text("Location Usage")
-                        }
-                        Toggle(isOn: self.$notificationToggle) {
-                            Text("Notifications")
-                        }
-                    }
+                    Spacer()
+                }
+                HStack {
+                    Text("Seller Rating")
+                        .padding(.leading, 20)
+                        .padding(.top, 10)
+                        .font(.system(size: 20))
+                        .padding(.bottom, 1)
+                    Spacer()
+                }
+                HStack {
+                    RatingView()
+                        .padding(.leading, 40)
+                        .font(.system(size: 20))
+                    Spacer()
+                }
+                
+                HStack {
+                    Text("Bob's Listings")
+                        .padding(.leading, 20)
+                        .font(.system(size: 20))
+                    Spacer()
+                }
+                    .padding(.top, 5)
+                    .padding(.bottom, 0.01)
+                HStack {
+                    Spacer()
+                    Button("Sort List") {
                         
-            }.background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-            .navigationBarTitle("Settings")
-         }
+                    }
+                    .frame(width: 100, height:20)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+
+                    Button("Sort List 2") {
+                        
+                    }
+                    .frame(width: 100, height:20)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+
+                    Spacer()c
+                    Spacer()
+                    Spacer()
+                }
+                
+     
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
+                    ForEach(items, id: \.self) { item in
+                        Text("\(item)")
+                            .frame(width: 110, height: 110)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding()
+            }
+        
+        
+        
+         
+         
         }
     }
  }
 
 
+
 struct Previews_AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView()
+    }
+}
+
+struct StarView: View {
+    let isFilled: Bool
+
+    var body: some View {
+        Image(systemName: isFilled ? "star.fill" : "star")
+            .resizable()
+            .frame(width: 30, height: 30)
+            .foregroundColor(isFilled ? .yellow : .gray)
+    }
+}
+
+struct RatingView: View {
+    @State private var rating: Int = 0
+
+    var body: some View {
+        HStack {
+            ForEach(1...5, id: \.self) { index in
+                StarView(isFilled: index <= rating)
+                    .onTapGesture {
+                        rating = index
+                    }
+            }
+        }
     }
 }
