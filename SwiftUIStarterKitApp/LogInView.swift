@@ -51,6 +51,7 @@ struct LogInView: View {
                     
                     Button(action: {
                         self.settings.loggedIn = true
+                        
                     }) {
                         HStack {
                             Text("Log In")
