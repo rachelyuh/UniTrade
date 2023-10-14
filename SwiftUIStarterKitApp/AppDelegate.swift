@@ -5,7 +5,8 @@
 //  Created by Osama Naeem on 01/08/2019.
 //  Copyright © 2023 . All rights reserved.
 //
-
+import SwiftUI
+import FirebaseCore
 import UIKit
 
 @UIApplicationMain
@@ -14,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
@@ -34,3 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+struct YourApp: App {
+  // register app delegate for Firebase setup
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+
+  var body: some Scene {
+    WindowGroup {
+      NavigationView {
+        LogInView()
+      }
+    }
+  }
+}
