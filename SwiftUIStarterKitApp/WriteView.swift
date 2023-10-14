@@ -13,7 +13,7 @@ import SwiftUI
 struct WriteView: View{
     
     @StateObject
-    var viewModel = WriteData()
+    var viewModel = FirebaseTest()
     
     @State
     var content: String = ""
@@ -24,7 +24,7 @@ struct WriteView: View{
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                viewModel.pushNewProduct(objectId: content,  username: "fds", prodName: "fds", description: "AWESOME sofa", price: 4.32,  image: "fds",  category: ["electroni", "furniture"])
+                //viewModel.readValue(usaname: content)
             } label: {
                 Text("Push")
                     .padding()

@@ -14,9 +14,10 @@ class FirebaseTest: ObservableObject{
     
     private let ref = Database.database().reference()
     
-    func pushNewValue(value: String){
+    func readValue(value: String){
         //self.ref.child("user").setValue(value)
         self.ref.child("user").child(value).child("name").setValue("Kim")
+        
         
     }
     

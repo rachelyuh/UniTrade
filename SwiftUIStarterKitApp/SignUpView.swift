@@ -132,12 +132,18 @@ struct SignUpView: View {
                         .foregroundColor(.red)
                         .font(.system(size: 12))
                     
+                    }
+                
+                @StateObject
+                var viewModel = WriteData()
+                
+                VStack{
                     Button(action: {
                         let filled = !name.isEmpty && !emailAddress.isEmpty && emailAddress.contains("@gatech.edu") && !password.isEmpty && !bio.isEmpty && !username.isEmpty && !confirmPassword.isEmpty
                         
                         if filled {
                             filledVar = ""
-                            print("cool")
+                            viewModel.pushNewUser(username: username, name: name, pfp: "fakepfp", bio: bio, password: password, email: emailAddress, productList: [1,4], serviceList: [2,3])
                         }
                         if !filled {
                             filledVar = "Not all required fields are filled!"
