@@ -15,6 +15,8 @@ class UserSettings: ObservableObject {
     @Published var navigateNowToSignup: Bool = false
 }
 
+let items = Array(1...12) // Example data
+
 struct StartView: View {
     @EnvironmentObject var settings: UserSettings
     
@@ -37,21 +39,95 @@ struct OnboardingModel {
 
 struct ContentView: View {
 //    @EnvironmentObject var settings: UserSettings
-    
-//    var onboardingDataArray: [OnboardingModel] = [
-//        OnboardingModel(id: 1, image: "photography", titleText: "Travel the World", descriptionText: "Explore the world and get to know different cultures and people from all around the world"),
-//        OnboardingModel(id: 2, image: "hikingmental", titleText: "Activities", descriptionText: "Get to know about the most famous spots for adventures and activities."),
-//        OnboardingModel(id: 3, image: "surfphoto", titleText: "Training and Tutorial", descriptionText: "Best training and tutorial collections for activities."),
-//        OnboardingModel(id: 4, image: "surfboardbags", titleText: "Dream Equipments", descriptionText: "Go through some of our best collections of hiking/surfing gear and more", showButton: true)
-//    ]
-//
+
     var body: some View {
-        Text("Helloafuidejioda")
+        
+        VStack {
+            ScrollView {
+                
+                Text("UniTrade")
+                    .padding(.top, 25)
+                    .font(.title)
+                    .font(.system(size: 16, weight: .bold, design: Font.Design.default))
+                    .padding(.bottom, 3)
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 1), GridItem(.flexible(), spacing: 1)], spacing: 15) {
+                    ForEach(items, id: \.self) { _ in
+                        VStack {
+                            Image("jover") // Use "jover" for all the images
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 180, height: 180)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                            Text("JOVER")
+                        }
+                
+                    }
+                }                .padding(10)
+                .padding(.bottom, 10)
+            }
+            
+                NavigationView {
+                           VStack {
+                               Spacer()
+                               Spacer() // Create space at the top
+                               HStack {
+                                   Spacer() // Create space on the left
+                                   NavigationLink(destination: Text("Home")) {
+                                       Image(systemName: "house.fill")
+                                           .font(.system(size: 40))
+                                           .padding(.top, 8)
+                                           .padding(.leading, 5)
+                                           .padding(.trailing, 5)
+                                   }
+                                   NavigationLink(destination: Text("Search")) {
+                                       Image(systemName: "magnifyingglass")
+                                           .font(.system(size: 40))
+                                           .padding(.top, 8)
+                                           .padding(.leading, 5)
+                                           .padding(.trailing, 5)
+                                   }
+                                   NavigationLink(destination: Text("Create")) {
+                                       Image(systemName: "plus.circle")
+                                           .font(.system(size: 40))
+                                           .padding(.top, 8)
+                                           .padding(.leading, 5)
+                                           .padding(.trailing, 5)
+                                   }
+                                   NavigationLink(destination: Text("Messages")) {
+                                       Image(systemName: "message.fill")
+                                           .font(.system(size: 40))
+                                           .padding(.top, 8)
+                                           .padding(.leading, 5)
+                                           .padding(.trailing, 5)
+                                   }
+                                   NavigationLink(destination: Text("Profile")) {
+                                       Image(systemName: "person.fill")
+                                           .font(.system(size: 40))
+                                           .padding(.top, 8)
+                                           .padding(.leading, 5)
+                                           .padding(.trailing, 5)
+                                   }
+                                   Spacer() // Create space on the right
+                               }
+                               .navigationBarTitle("", displayMode: .inline)
+                               .padding(.bottom, 0)
+                       
+                }
+                    
+                
+            }
+            .frame(width: 350, height: 37)
+        }
+        
+      
+//        
 //    GeometryReader { geometry in
 //        NavigationView {
 //                ZStack {
 //                    NavigationLink(destination: LogInView(), isActive: self.$settings.navigateNowToLogIn) { EmptyView() }
-//                    NavigationLink(destination: SisgnUpView(), isActive: self.$settings.navigateNowToSignup) { EmptyView() }
+//                    NavigationLink(destination: SignUpView(), isActive: self.$settings.navigateNowToSignup) { EmptyView() }
 //
 //                    SwiftyUIScrollView(axis: .horizontal, numberOfPages: self.onboardingDataArray.count, pagingEnabled: true, pageControlEnabled: true, hideScrollIndicators: true, currentPageIndicator: .black, pageIndicatorTintColor: .gray) {
 //                                HStack(spacing: 0) {
@@ -63,7 +139,7 @@ struct ContentView: View {
 //                            }.frame(width: geometry.size.width, height: geometry.size.height)
 //                }
 //            }
-//        }
+        
     }
 }
 
