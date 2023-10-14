@@ -137,7 +137,11 @@ struct ActivitiesContentView: View {
                     Button(action: {
                         self.settings.loggedIn = false
                     }) {
-                        Text("Log Out")
+                        NavigationLink(destination: LogInView()) {
+                            
+                                           Text("Log Out")
+                                               .foregroundColor(.blue)
+                                       }
                     })
             }.sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
