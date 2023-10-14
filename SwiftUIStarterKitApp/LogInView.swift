@@ -58,7 +58,14 @@ struct LogInView: View {
                             .background(Color.blue)
                             .cornerRadius(5)
                     }
-                     .padding(.bottom, 40)
+                     .padding(.bottom, 20)
+                
+                Button(action: {
+                        print("Take to forget password VC")
+                        }) {
+                        Text("Create a new account")
+                                .font(.system(size: 20))
+                }
                 
                 Divider()
                 
@@ -67,9 +74,7 @@ struct LogInView: View {
                         }) {
                         Text("Forgot your password?")
                 }
-                
-                Spacer()
-                
+            
             }
             .padding(.bottom, 90)
             }
