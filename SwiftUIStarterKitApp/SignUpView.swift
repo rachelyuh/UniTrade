@@ -171,3 +171,11 @@ struct SignUpView: View {
         }
     }
 }
+
+
+
+struct Previews_SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView()
+    }
+}
