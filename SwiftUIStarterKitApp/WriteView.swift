@@ -2,7 +2,7 @@
 //  WriteView.swift
 //  SwiftUIStarterKitApp
 //
-//  Created by Matthew Lu on 10/13/23.
+//  Created by Ben Kim on 10/13/23.
 //  Copyright © 2023 NexThings. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import SwiftUI
 struct WriteView: View{
     
     @StateObject
-    var viewModel = FirebaseTest()
+    var viewModel = WriteData()
     
     @State
     var content: String = ""
@@ -24,7 +24,7 @@ struct WriteView: View{
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                viewModel.pushNewValue(value: content)
+                viewModel.pushNewProduct(objectId: content,  username: "fds", prodName: "fds", description: "AWESOME sofa", price: 4.32,  image: "fds",  category: ["electroni", "furniture"])
             } label: {
                 Text("Push")
                     .padding()
