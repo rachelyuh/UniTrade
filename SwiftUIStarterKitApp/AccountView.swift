@@ -106,7 +106,7 @@ struct AccountView: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
 
-                    Spacer()c
+                    Spacer()
                     Spacer()
                     Spacer()
                 }

@@ -10,8 +10,8 @@ import SwiftUI
 import Combine
 
 class UserSettings: ObservableObject {
-    @Published var loggedIn : Bool = false
-    @Published var navigateNowToLogIn: Bool = false
+    @Published var loggedIn : Bool = false;
+    @Published var navigateNowToLogIn: Bool = false;
     @Published var navigateNowToSignup: Bool = false
 }
 
@@ -36,33 +36,34 @@ struct OnboardingModel {
 }
 
 struct ContentView: View {
-    @EnvironmentObject var settings: UserSettings
+//    @EnvironmentObject var settings: UserSettings
     
-    var onboardingDataArray: [OnboardingModel] = [
-        OnboardingModel(id: 1, image: "photography", titleText: "Travel the World", descriptionText: "Explore the world and get to know different cultures and people from all around the world"),
-        OnboardingModel(id: 2, image: "hikingmental", titleText: "Activities", descriptionText: "Get to know about the most famous spots for adventures and activities."),
-        OnboardingModel(id: 3, image: "surfphoto", titleText: "Training and Tutorial", descriptionText: "Best training and tutorial collections for activities."),
-        OnboardingModel(id: 4, image: "surfboardbags", titleText: "Dream Equipments", descriptionText: "Go through some of our best collections of hiking/surfing gear and more", showButton: true)
-    ]
-    
+//    var onboardingDataArray: [OnboardingModel] = [
+//        OnboardingModel(id: 1, image: "photography", titleText: "Travel the World", descriptionText: "Explore the world and get to know different cultures and people from all around the world"),
+//        OnboardingModel(id: 2, image: "hikingmental", titleText: "Activities", descriptionText: "Get to know about the most famous spots for adventures and activities."),
+//        OnboardingModel(id: 3, image: "surfphoto", titleText: "Training and Tutorial", descriptionText: "Best training and tutorial collections for activities."),
+//        OnboardingModel(id: 4, image: "surfboardbags", titleText: "Dream Equipments", descriptionText: "Go through some of our best collections of hiking/surfing gear and more", showButton: true)
+//    ]
+//
     var body: some View {
-    GeometryReader { geometry in
-        NavigationView {
-                ZStack {
-                    NavigationLink(destination: LogInView(), isActive: self.$settings.navigateNowToLogIn) { EmptyView() }
-                    NavigationLink(destination: SignUpView(), isActive: self.$settings.navigateNowToSignup) { EmptyView() }
-                    
-                    SwiftyUIScrollView(axis: .horizontal, numberOfPages: self.onboardingDataArray.count, pagingEnabled: true, pageControlEnabled: true, hideScrollIndicators: true, currentPageIndicator: .black, pageIndicatorTintColor: .gray) {
-                                HStack(spacing: 0) {
-                                    ForEach(self.onboardingDataArray, id: \.id) { item in
-                                          OnboardingView(onboardingData: item)
-                                                .frame(width: geometry.size.width, height: geometry.size.height)
-                                       }
-                                }
-                            }.frame(width: geometry.size.width, height: geometry.size.height)
-                }
-            }
-        }
+        Text("Helloafuidejioda")
+//    GeometryReader { geometry in
+//        NavigationView {
+//                ZStack {
+//                    NavigationLink(destination: LogInView(), isActive: self.$settings.navigateNowToLogIn) { EmptyView() }
+//                    NavigationLink(destination: SisgnUpView(), isActive: self.$settings.navigateNowToSignup) { EmptyView() }
+//
+//                    SwiftyUIScrollView(axis: .horizontal, numberOfPages: self.onboardingDataArray.count, pagingEnabled: true, pageControlEnabled: true, hideScrollIndicators: true, currentPageIndicator: .black, pageIndicatorTintColor: .gray) {
+//                                HStack(spacing: 0) {
+//                                    ForEach(self.onboardingDataArray, id: \.id) { item in
+//                                          OnboardingView(onboardingData: item)
+//                                                .frame(width: geometry.size.width, height: geometry.size.height)
+//                                       }
+//                                }
+//                            }.frame(width: geometry.size.width, height: geometry.size.height)
+//                }
+//            }
+//        }
     }
 }
 
@@ -130,16 +131,16 @@ struct OnboardingView: View {
 }
 
 
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        StartView()
-    }
-}
-#endif
-//
-//struct Previews_ContentView_Previews: PreviewProvider {
+//#if DEBUG
+//struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
-////        Cont
+//        StartView()
 //    }
 //}
+//#endif
+//
+struct Previews_ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
