@@ -54,7 +54,6 @@ struct SignUpView: View {
                             // Define the app's Photos picker.
                             PhotosPicker(
                                 selection: $viewModel.selection,
-                                selectionBehavior: .continuousAndOrdered,
                                 matching: .images,
                                 preferredItemEncoding: .current,
                                 photoLibrary: .shared()

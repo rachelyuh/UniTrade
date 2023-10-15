@@ -141,7 +141,6 @@ struct AccountView: View {
                         Spacer()
                     }
                     
-                    
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
                         ForEach(items, id: \.self) { item in
                             Text("\(item)")
