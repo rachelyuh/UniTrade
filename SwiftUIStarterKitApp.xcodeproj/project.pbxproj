@@ -15,6 +15,7 @@
 		8D00B9D92ADB32AB00E9C363 /* ListingMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00B9D82ADB32AB00E9C363 /* ListingMarket.swift */; };
 		8D1EB1D32ADB4816006E481B /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EB1D22ADB4816006E481B /* ListingView.swift */; };
 		8D1EB1D52ADB6B8C006E481B /* ListingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EB1D42ADB6B8C006E481B /* ListingDetailView.swift */; };
+		8D1EB1D72ADB8343006E481B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1EB1D62ADB8343006E481B /* SearchView.swift */; };
 		CA1E097E2ADAA9EB00BBDD3E /* CreateListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E097D2ADAA9EB00BBDD3E /* CreateListing.swift */; };
 		CA1E09802ADAAA0A00BBDD3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA1E097F2ADAAA0A00BBDD3E /* GoogleService-Info.plist */; };
 		CA1E09822ADAAA5800BBDD3E /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E09812ADAAA5800BBDD3E /* PHPicker.swift */; };
@@ -61,6 +62,7 @@
 		8D00B9D82ADB32AB00E9C363 /* ListingMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingMarket.swift; sourceTree = "<group>"; };
 		8D1EB1D22ADB4816006E481B /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
 		8D1EB1D42ADB6B8C006E481B /* ListingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailView.swift; sourceTree = "<group>"; };
+		8D1EB1D62ADB8343006E481B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		CA1E097D2ADAA9EB00BBDD3E /* CreateListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListing.swift; sourceTree = "<group>"; };
 		CA1E097F2ADAAA0A00BBDD3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA1E09812ADAAA5800BBDD3E /* PHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				F52AA7A622F4883A0051F943 /* TabBarView.swift */,
 				F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */,
 				8D1EB1D22ADB4816006E481B /* ListingView.swift */,
+				8D1EB1D62ADB8343006E481B /* SearchView.swift */,
 				F57143C423008A27005F4724 /* PlaceDetailView.swift */,
 				8D1EB1D42ADB6B8C006E481B /* ListingDetailView.swift */,
 				F5143EB12301F435008D8C89 /* BlurView.swift */,
@@ -343,6 +346,7 @@
 				F542B64922F2DBF200E490A1 /* AppDelegate.swift in Sources */,
 				F542B64B22F2DBF200E490A1 /* SceneDelegate.swift in Sources */,
 				8D1EB1D32ADB4816006E481B /* ListingView.swift in Sources */,
+				8D1EB1D72ADB8343006E481B /* SearchView.swift in Sources */,
 				8D00B9D92ADB32AB00E9C363 /* ListingMarket.swift in Sources */,
 				17244EBE2353DC4F00D31F7E /* UIScrollViewController.swift in Sources */,
 				F5143EB22301F435008D8C89 /* BlurView.swift in Sources */,

@@ -11,7 +11,7 @@ import Combine
 struct ListingDetailView : View {
     @Binding var isShowing: Bool
     @Binding var placeItem: ListingInformation?
-    let defaultPoint = ListingInformation(id: 0, listingName: "Default", listingDesc: "Default", seller: "Seller", price: 0.00, image: "Default PlaceHolder")
+    let defaultPoint = ListingInformation(id: UUID(), listingName: "Default", listingDesc: "Default", seller: "Seller", price: 0.00, image: "Default PlaceHolder")
     
     @ObservedObject var selectedPoint = SelectedPoint()
     

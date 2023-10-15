@@ -37,8 +37,6 @@ struct CreateListing: View {
                 Form {
                     Section(header: Text("Required Information")){
                         HStack{
-                            //                            Text("Title:")
-                            //                                .font(.system(size: 18))
                             TextField("Add a title here...", text: self.$title)
                                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                                 .accentColor(.black)
@@ -76,7 +74,6 @@ struct CreateListing: View {
                                 // Define the app's Photos picker.
                                 PhotosPicker(
                                     selection: $viewModel.selection,
-                                    selectionBehavior: .continuousAndOrdered,
                                     matching: .images,
                                     preferredItemEncoding: .current,
                                     photoLibrary: .shared()
