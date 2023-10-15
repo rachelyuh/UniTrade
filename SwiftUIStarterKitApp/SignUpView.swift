@@ -137,13 +137,26 @@ struct SignUpView: View {
                 @StateObject
                 var viewModel = WriteData()
                 
+                @StateObject
+                var checkExists = FirebaseTest()
+                
                 VStack{
                     Button(action: {
+                    
+
                         let filled = !name.isEmpty && !emailAddress.isEmpty && emailAddress.contains("@gatech.edu") && !password.isEmpty && !bio.isEmpty && !username.isEmpty && !confirmPassword.isEmpty
                         
                         if filled {
-                            filledVar = ""
-                            viewModel.pushNewUser(username: username, name: name, pfp: "fakepfp", bio: bio, password: password, email: emailAddress, productList: [1,4], serviceList: [2,3])
+                            checkExists.keyExistsInFirebase(key: username) { exists in
+                                if exists {
+                                    filledVar = "Account Already Exists"
+                                } else {
+                                    filledVar = ""
+                                    viewModel.pushNewUser(username: username, name: name, pfp: "fakepfp", bio: bio, password: password, email: emailAddress, productList: [1,4], serviceList: [2,3])
+                                }
+                            }
+                        
+        
                         }
                         if !filled {
                             filledVar = "Not all required fields are filled!"
@@ -165,9 +178,11 @@ struct SignUpView: View {
         
     }
     
-    struct Previews_SignUpView_Previews: PreviewProvider {
-        static var previews: some View {
-            SignUpView()
-        }
+}
+
+struct SignUpViewPreview: PreviewProvider{
+    static var previews: some View{
+        SignUpView()
     }
+    
 }

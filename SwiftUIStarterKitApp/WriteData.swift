@@ -22,8 +22,7 @@ class WriteData: ObservableObject{
         self.ref.child("UserProfiles").child(username).child("password").setValue(password)
         self.ref.child("UserProfiles").child(username).child("email").setValue(email)
         self.ref.child("UserProfiles").child(username).child("productList").setValue(productList)
-        self.ref.child("UserProfiles").child(username).child("serviceList").setValue(serviceList)
-        
+        self.ref.child("UserProfiles").child(username).child("serviceList").setValue(serviceList)        
     }
     
     func pushNewProduct(objectId: String, username: String, prodName: String, description: String, price: Float, image: String, category: [String]){

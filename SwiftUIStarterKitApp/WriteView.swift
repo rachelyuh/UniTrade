@@ -24,7 +24,13 @@ struct WriteView: View{
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                //viewModel.readValue(usaname: content)
+                viewModel.keyExistsInFirebase(key: content) { exists in
+                    if exists {
+                        print("The key exists in Firebase")
+                    } else {
+                        print("The key does not exist in Firebase")
+                    }
+                }
             } label: {
                 Text("Push")
                     .padding()
