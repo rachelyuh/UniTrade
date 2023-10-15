@@ -7,6 +7,9 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import Firebase
+import FirebaseDatabase
 
 struct AccountView: View {
     
@@ -19,11 +22,16 @@ struct AccountView: View {
     @State var name: String = "j"
     @State var selectedCurrency: Int = 0
     @State public var editProfile = false
+    @State static var loggedOut = false
+    @State var imageData = Data()
+    @State private var image: UIImage? = nil
+    @State var isVisible = false
 
     let items = Array(1...12) // Example data
     
     @State
     var viewModel = FirebaseTest();
+
     
     
     
@@ -35,13 +43,16 @@ struct AccountView: View {
                     Spacer()
                     Spacer()
                     HStack {
-                        Image("italy")
-                            .resizable()
-                            .frame(width: 70, height: 70)
-                            .background(Color.yellow)
-                            .clipShape(Circle())
-                            .padding(.bottom, 10)
-                            .padding(.leading, 30)
+                        if isVisible {
+                            Image(uiImage: UIImage(data: imageData)!)
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                                .background(Color.yellow)
+                                .clipShape(Circle())
+                                .padding(.bottom, 10)
+                                .padding(.leading, 30)
+                        }
+                    
                         VStack {
                             Text(name)
                                 .onAppear {
@@ -55,6 +66,7 @@ struct AccountView: View {
                                 .onAppear {
                                     // This function will run when the view appears
                                     updateMyVariable()
+                                    
                                 }
                                 .padding(.leading, 0)
                                 .padding(.bottom, 1)
@@ -145,15 +157,33 @@ struct AccountView: View {
                 
                 
             }
-         
         }
+        .background(Color.gray)
+        .navigationBarItems(trailing: Button("Log Out", action: {
+            AccountView.loggedOut = true
+        }))
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("UniTrade")
     }
     func updateMyVariable() {
         viewModel.getUserData(username: globalIdentity) { dictionary in
             if let data = dictionary {
-                print("Data retrieved from Firebase:")
+                print("Data retrieved from Fb:")
                 name = data["name"] as! String
                 username = data["username"] as! String
+                let imageURL = data["profilePic"] as! String
+                let storage = Storage.storage()
+                let storageRef = storage.reference().child(imageURL)
+                storageRef.getData(maxSize: 5*1024*1024) { data, error in
+                    if error == nil && data != nil {
+                        imageData = data!
+                        isVisible = true
+                    }
+                    
+                }
+                
+                
+                
             } else {
                 print("Failed to retrieve data from Firebase.")
             }
@@ -161,6 +191,15 @@ struct AccountView: View {
     }
  }
 
+struct PlaceholderImage: View {
+    var body: some View {
+        Image(systemName: "photo")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 200, height: 200) // Set the desired dimensions
+            .foregroundColor(.gray) // Adjust color to match your design
+    }
+}
 
 
 struct StarView: View {

@@ -154,6 +154,9 @@ struct ListingView: View {
                         
                     }
                     .navigationBarTitle("UniTrade", displayMode: .inline)
+                    .navigationBarItems(trailing: Button("Log Out", action: {
+                        loggedOut = true
+                    }))
                 
             }.sheet(isPresented: self.$isShowing) { ListingDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
