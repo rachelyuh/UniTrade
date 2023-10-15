@@ -17,7 +17,7 @@ struct TabbarView: View {
     var body: some View {
         TabView {
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                ListingView(activtiesData: Listings(items: ListingMarket.listings))
             }
             .tag(0)
             .tabItem {
@@ -30,7 +30,7 @@ struct TabbarView: View {
             }
             
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                ListingView(activtiesData: Listings(items: ListingMarket.listings))
             }
             .tag(1)
             .tabItem {

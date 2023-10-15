@@ -80,6 +80,46 @@ class FirebaseTest: ObservableObject{
                 }
             }
     }
+    
+    func getProductData(completion: @escaping ([String: Any]?) -> Void){
+            // Reference to your Firebase Database
+        // Reference to your Firebase Database
+        let databaseRef = Database.database().reference()
+
+                // Reference to the location you want to read from (e.g., a specific node or key)
+        let specificRef = databaseRef.child("Products")
+
+        // Observe changes in the specified location
+        specificRef.observeSingleEvent(of: .value) { snapshot in
+                if let value = snapshot.value as? [String: Any] {
+                    // Successfully retrieved data and cast it to a dictionary
+                    completion(value)
+                } else {
+                    // Data retrieval failed or is not in the expected format
+                    completion(nil)
+                }
+            }
+    }
+    
+    func getServiceData(completion: @escaping ([String: Any]?) -> Void){
+            // Reference to your Firebase Database
+        // Reference to your Firebase Database
+        let databaseRef = Database.database().reference()
+
+                // Reference to the location you want to read from (e.g., a specific node or key)
+        let specificRef = databaseRef.child("Services")
+
+        // Observe changes in the specified location
+        specificRef.observeSingleEvent(of: .value) { snapshot in
+                if let value = snapshot.value as? [String: Any] {
+                    // Successfully retrieved data and cast it to a dictionary
+                    completion(value)
+                } else {
+                    // Data retrieval failed or is not in the expected format
+                    completion(nil)
+                }
+            }
+    }
 
 
 }

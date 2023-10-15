@@ -52,10 +52,6 @@ struct AccountView: View {
                                 .padding(.leading, 10)
                                 .padding(.top, 10)
                             Text("@\(username)")
-                                .onAppear {
-                                    // This function will run when the view appears
-                                    updateMyVariable()
-                                }
                                 .padding(.leading, 0)
                                 .padding(.bottom, 1)
                             

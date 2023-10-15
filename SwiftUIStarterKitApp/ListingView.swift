@@ -18,7 +18,7 @@ struct ListingType {
 }
 
 struct ListingInformation {
-    var id: Int
+    var id: String
     var listingName: String
     var listingDesc: String
     var seller: String
@@ -27,12 +27,15 @@ struct ListingInformation {
    
 }
 
+
 struct ListingData {
     var id: Int
     var activitiesPlaces: [ListingInformation]
 }
 
 class Listings: ObservableObject {
+
+    
     let objectWillChange = PassthroughSubject<Void, Never>()
     
     var activitiesCollection : [ListingData] {
@@ -47,9 +50,72 @@ class Listings: ObservableObject {
                }
     }
     
-    init(data: [ListingData], items: [ListingType] ) {
-        self.activitiesCollection = data
+    @State
+    var viewModel = FirebaseTest()
+    
+    init(items: [ListingType] ) {
+        
         self.activities = items
+        self.activitiesCollection = []
+        var bigData: [ListingData] = [ListingData(id:0, activitiesPlaces: [])]
+        var arr: [ListingInformation] = []
+        
+    
+        viewModel.getProductData() { dictionary in
+            if let data = dictionary as? [String: Any] {
+                print("Data retrieved from Firebase:")
+                
+                if let goodData = data as? [String: [String: Any]] {
+                    for (key, data) in goodData{
+                        let id = data["objectId"] as! String
+                        let listingName = data["productName"] as! String
+                        let listingDesc = data["description"] as! String
+                        let seller = data["username"] as! String
+                        let price = data["price"] as! Float
+                        let image = data["image"] as! String
+                        let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
+                        arr.append(tempObj)
+                    }
+                    bigData.append(ListingData(id:1, activitiesPlaces: arr))
+                
+                } else {
+                    print("Failed to parse data from Firebase.")
+                }
+                
+            } else {
+                print("Failed to retrieve data from Firebase.")
+            }
+
+        }
+        
+        arr = []
+        viewModel.getServiceData() { dictionary in
+            if let data = dictionary as? [String: Any] {
+                print("Data retrieved from Firebase:")
+                
+                if let goodData = data as? [String: [String: Any]] {
+                    for (key, data) in goodData{
+                        let id = data["objectId"] as! String
+                        let listingName = data["productName"] as! String
+                        let listingDesc = data["description"] as! String
+                        let seller = data["username"] as! String
+                        let price = data["price"] as! Float
+                        let image = data["image"] as! String
+                        let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
+                        arr.append(tempObj)
+                    }
+                    bigData.append(ListingData(id:2, activitiesPlaces: arr))
+                
+                } else {
+                    print("Failed to parse data from Firebase.")
+                }
+                
+            } else {
+                print("Failed to retrieve data from Firebase.")
+            }
+
+        }
+        self.activitiesCollection = bigData
     }
 }
 
@@ -137,7 +203,7 @@ struct ListingView: View {
                     }) {
                         Text("Log Out")
                     })
-            }.sheet(isPresented: self.$isShowing) { ListingDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
+            }.sheet(isPresented: self.$isShowing) { ListingDetailView(placeItem: self.$placeItemSelected)}
         }
     }
 }
