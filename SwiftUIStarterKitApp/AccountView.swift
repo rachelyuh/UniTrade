@@ -19,7 +19,7 @@ struct AccountView: View {
     
     
     
- 
+    let listingMarket = ListingMarket()
     
     
     var body: some View {
@@ -46,7 +46,6 @@ struct AccountView: View {
                             .padding(.bottom, 1)
                         HStack {
                             Button("Edit Profile") {
-                                
                             }
                             .frame(width: 100, height:20)
                             .background(Color.blue)
@@ -99,8 +98,7 @@ struct AccountView: View {
                     .cornerRadius(5)
 
                     Button("Sort List 2") {
-                        
-                    }
+                        listingMarket.setListingInformation()                    }
                     .frame(width: 100, height:20)
                     .background(Color.blue)
                     .foregroundColor(.white)

@@ -18,6 +18,7 @@ class WriteData: ObservableObject{
     
     private let ref = Database.database().reference()
     
+    
     func pushNewUser(username: String, name: String, pfp: String, bio: String, password: String, email: String, productList: [Int], serviceList: [Int]){
         self.ref.child("UserProfiles").child(username).child("username").setValue(username)
         self.ref.child("UserProfiles").child(username).child("name").setValue(name)

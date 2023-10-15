@@ -8,11 +8,17 @@
 
 import SwiftUI
 
+
+
 struct TabbarView: View {
+    var listingMarket: ListingMarket = ListingMarket()
+    
+
     var body: some View {
+        
         TabView {
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                ListingView(activtiesData: Listings(data: listingMarket.activityData, items: ListingMarket.listings))
             }
             .tag(0)
             .tabItem {
@@ -23,9 +29,16 @@ struct TabbarView: View {
                     .padding(.trailing, 5)
                 Text("Home")
             }
+            .onAppear() {
+                    listingMarket.setListingInformation()
+
+        
+                
+                
+            }
             
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                ListingView(activtiesData: Listings(data: listingMarket.activityData, items: ListingMarket.listings))
             }
             .tag(1)
             .tabItem {
@@ -51,7 +64,7 @@ struct TabbarView: View {
             }
             
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                ListingView(activtiesData: Listings(data: listingMarket.activityData, items: ListingMarket.listings))
             }
             .tag(3)
             .tabItem {
@@ -78,6 +91,7 @@ struct TabbarView: View {
         }
     }
 }
+
 
 
 

@@ -18,12 +18,12 @@ struct ListingType {
 }
 
 struct ListingInformation {
-    var id: Int
+    var id: String
     var listingName: String
     var listingDesc: String
     var seller: String
     var price: Float
-    var image: String
+    var image: Data
    
 }
 
@@ -178,13 +178,13 @@ struct MarketBestSellerViews: View {
     
     var body: some View {
             VStack{
-                Image("\(listingInfo.image)").renderingMode(.original)
-                        .resizable()
-                        .frame(width: 155, height: 200)
-                        .background(Color.black)
-                        .cornerRadius(10)
-                        .opacity(0.8)
-                        .aspectRatio(contentMode: .fill)
+//                Image(uiImage: (UIImage(data: listingInfo.image) ?? UIImage(data: Data()))!).renderingMode(.original)
+//                        .resizable()
+//                        .frame(width: 155, height: 200)
+//                        .background(Color.black)
+//                        .cornerRadius(10)
+//                        .opacity(0.8)
+//                        .aspectRatio(contentMode: .fill)
                     Spacer()
                     Text(listingInfo.listingName)
                         .foregroundColor(Color.white)
@@ -209,11 +209,11 @@ struct MarketPromotionBannerView: View {
         }) {
             GeometryReader { g in
                    ZStack{
-                    Image("\(self.activtiesItems.activityImage)").renderingMode(.original)
-                       .resizable()
-                       .opacity(0.8)
-                       .aspectRatio(contentMode: .fill)
-                       .background(Color.black)
+//                    Image("\(self.activtiesItems.activityImage)").renderingMode(.original)
+//                       .resizable()
+//                       .opacity(0.8)
+//                       .aspectRatio(contentMode: .fill)
+//                       .background(Color.black)
                     
                     
                     if (self.selectedActivity.index == self.activtiesItems.id) {

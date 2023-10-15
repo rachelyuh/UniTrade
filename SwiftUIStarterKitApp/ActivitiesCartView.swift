@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 
+
 class ActivitiesCart: ObservableObject {
     let objectWillChange = PassthroughSubject<Void, Never>()
     

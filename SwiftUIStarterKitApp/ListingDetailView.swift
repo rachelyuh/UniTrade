@@ -16,14 +16,14 @@ import Combine
 struct ListingDetailView : View {
     @Binding var isShowing: Bool
     @Binding var placeItem: ListingInformation?
-    let defaultPoint = ListingInformation(id: 0, listingName: "Default", listingDesc: "Default", seller: "Seller", price: 0.00, image: "Default PlaceHolder")
+    let defaultPoint = ListingInformation(id: "0", listingName: "Default", listingDesc: "Default", seller: "Seller", price: 0.00, image: Data())
     
     @ObservedObject var selectedPoint = SelectedPoint()
     
     var body: some View {
         GeometryReader { g in
             ZStack {
-                Image(self.placeItem?.image ?? "")
+                Image(uiImage: (UIImage(data: defaultPoint.image) ?? UIImage(data: Data()))!)
                     .resizable()
                     .frame(width: g.size.width, height: g.size.height)
                     .aspectRatio(contentMode: .fit)

@@ -111,7 +111,8 @@ struct CreateListing: View {
                                 return
                             }
                             let storage = Storage.storage()
-                            let storageRef = storage.reference().child("images").child("objectID.jpg")
+                            let path = "images/\(UUID().uuidString).jpg"
+                            let storageRef = storage.reference().child(path)
                             
                             let uploadTask = storageRef.putData(jpegData, metadata: nil) { metadata, error in
                                 if let error = error {
@@ -119,12 +120,13 @@ struct CreateListing: View {
                                 } else {
                                     storageRef.downloadURL { url, error in
                                         if let downloadURL = url {
-                                            let imageURL = downloadURL.absoluteString
+                                        
+                                            let imageURL = path
                                             let imageDescription = "A description for the uploaded image"
                                             if listingTypes[listing] == "Product" {
-                                                firebaseModel.pushNewProduct(objectId: "content",  username: "username", prodName: title, description: description, price: Float(price),  image: imageURL,  category: ["t"])
+                                                firebaseModel.pushNewProduct(objectId: "potato",  username: "username", prodName: title, description: description, price: Float(price),  image: imageURL,  category: ["t"])
                                             } else{
-                                                firebaseModel.pushNewService(objectId: "content",  username: "username", servName: title, description: description, price: Float(price),  image: imageURL,  category: ["t"])
+                                                firebaseModel.pushNewService(objectId: "potato",  username: "username", servName: title, description: description, price: Float(price),  image: imageURL,  category: ["t"])
                                             }
 //
                                         } else if let error = error {
