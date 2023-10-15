@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let settings = UserSettings()
-            window.rootViewController = UIHostingController(rootView: TabbarView().environmentObject(settings))
+            window.rootViewController = UIHostingController(rootView: LogInView().environmentObject(settings))
             self.window = window
             window.makeKeyAndVisible()
         }

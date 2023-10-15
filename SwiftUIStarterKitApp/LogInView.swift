@@ -34,7 +34,7 @@ struct LogInView: View {
                         .font(.system(size: 14, weight: .bold, design: Font.Design.default))
                         .padding(.bottom, 50)
                     
-                    TextField("Email", text: self.$username)
+                    TextField("Username", text: self.$username)
                         .frame(width: geometry.size.width - 45, height: 50)
                         .textContentType(.emailAddress)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
@@ -78,7 +78,7 @@ struct LogInView: View {
                     }.padding(.bottom, 0)
                     
                     
-                    NavigationLink(destination: WriteView(globalIdentity: username), isActive: $canGo){
+                    NavigationLink(destination: TabbarView(globalIdentity: username), isActive: $canGo){
                     }
                     
                     

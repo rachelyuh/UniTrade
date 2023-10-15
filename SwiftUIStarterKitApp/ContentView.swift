@@ -22,7 +22,7 @@ struct StartView: View {
     
     var body: some View {
         if settings.loggedIn {
-            return AnyView(TabbarView())
+            return AnyView(TabbarView(globalIdentity: ""))
         }else {
             return AnyView(ContentView())
         }

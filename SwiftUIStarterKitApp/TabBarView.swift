@@ -12,6 +12,8 @@ import SwiftUI
 
 struct TabbarView: View {
     
+    var globalIdentity: String
+    
     var body: some View {
         TabView {
             NavigationView {
@@ -79,12 +81,13 @@ struct TabbarView: View {
                     Text("Profile")
                 }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 
 struct Previews_TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabbarView()
+        TabbarView(globalIdentity: "")
     }
 }

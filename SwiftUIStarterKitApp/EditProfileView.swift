@@ -12,8 +12,9 @@ import SwiftUI
 struct EditProfileView: View {
     @State private var name = ""
     @State private var email = ""
-    @State private var username = ""
+    @State private var pronouns = ""
     @State private var bio = ""
+    @State private var number = ""
 
     var body: some View {
         let accountView = AccountView()
@@ -21,7 +22,8 @@ struct EditProfileView: View {
             Form {
                 Section(header: Text("Personal Information")) {
                     TextField("Name", text: $name)
-                    TextField("Username", text: $username)
+                    TextField("Pronouns", text: $pronouns)
+                    TextField("Phone Number", text: $number)
                     TextField("Email", text: $email)
                 }
 
