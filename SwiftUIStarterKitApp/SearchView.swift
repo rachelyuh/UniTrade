@@ -12,8 +12,68 @@ import Combine
 class Search: ObservableObject {
     var listings : [ListingInformation]
     
-    init(data: [ListingData]) {
-        self.listings = ((data[1].activitiesPlaces) + (data[2].activitiesPlaces))
+//    init(data: [ListingData]) {
+//        self.listings = ((data[1].activitiesPlaces) + (data[2].activitiesPlaces))
+//    }
+    
+    @State
+    var viewModel = FirebaseTest()
+    init() {
+        self.listings = []
+    
+        viewModel.getProductData() { dictionary in
+            if let data = dictionary as? [String: Any] {
+                print("Data retrieved from Firebase:")
+                
+                if let goodData = data as? [String: [String: Any]] {
+                    for (key, data) in goodData{
+                        let id = data["objectId"] as! String
+                        let listingName = data["productName"] as! String
+                        let listingDesc = data["description"] as! String
+                        let seller = data["username"] as! String
+                        let price = data["price"] as! Float
+                        let image = data["image"] as! String
+                        let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
+                        self.listings.append(tempObj)
+                    }
+                
+                } else {
+                    print("Failed to parse data from Firebase.")
+                }
+                
+            } else {
+                print("Failed to retrieve data from Firebase.")
+            }
+
+        }
+        
+        viewModel.getServiceData() { dictionary in
+            if let data = dictionary as? [String: Any] {
+                print("Data retrieved from Firebase:")
+                
+                if let goodData = data as? [String: [String: Any]] {
+                    for (key, data) in goodData{
+                        let id = data["objectId"] as! String
+                        let listingName = data["serviceName"] as! String
+                        let listingDesc = data["description"] as! String
+                        let seller = data["username"] as! String
+                        let price = data["price"] as! Float
+                        let image = data["image"] as! String
+                        
+                        let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
+                        self.listings.append(tempObj)
+                    }
+                
+                } else {
+                    print("Failed to parse data from Firebase.")
+                }
+                
+            } else {
+                print("Failed to retrieve data from Firebase.")
+            }
+
+        }
+        //self.activitiesCollection = bigData
     }
 
 }
@@ -70,7 +130,7 @@ struct SearchView: View {
                             .padding(.top, 30)
                     }
                 }
-        }.sheet(isPresented: self.$isShowing) { ListingDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
+        }.sheet(isPresented: self.$isShowing) { ListingDetailView(placeItem: self.$placeItemSelected)}
             .navigationBarBackButtonHidden(true)
     }
 }

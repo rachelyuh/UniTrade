@@ -17,7 +17,7 @@ struct ListingType {
     var selectedActivity: Bool
 }
 
-struct ListingInformation {
+struct ListingInformation : Identifiable {
     var id: String
     var listingName: String
     var listingDesc: String
@@ -198,7 +198,8 @@ struct ListingView: View {
                         }
                         
                     }
-                    .navigationBarTitle("Listings")
+                    .navigationBarTitle("UniTrade")
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarItems(trailing:
                     Button(action: {
                         self.settings.loggedIn = false
