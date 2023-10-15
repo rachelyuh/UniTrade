@@ -20,6 +20,7 @@ struct ChatsList: View {
                         }
                     }
                     .navigationBarTitle("Conversations")
+                    .navigationBarBackButtonHidden(true)
             }
     }
 }

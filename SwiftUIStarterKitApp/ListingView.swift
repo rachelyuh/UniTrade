@@ -157,6 +157,7 @@ struct ListingView: View {
                     .navigationBarItems(trailing: Button("Log Out", action: {
                         loggedOut = true
                     }))
+                    .navigationBarBackButtonHidden(true)
                 
             }.sheet(isPresented: self.$isShowing) { ListingDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }

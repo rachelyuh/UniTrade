@@ -71,5 +71,6 @@ struct SearchView: View {
                     }
                 }
         }.sheet(isPresented: self.$isShowing) { ListingDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
+            .navigationBarBackButtonHidden(true)
     }
 }
