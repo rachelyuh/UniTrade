@@ -103,7 +103,7 @@ class Listings: ObservableObject {
                         let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
                         arr.append(tempObj)
                     }
-                    self.activitiesCollection[1] = ListingData(id:1, activitiesPlaces: arr)
+                    self.activitiesCollection[2] = ListingData(id:2, activitiesPlaces: arr)
                 
                 } else {
                     print("Failed to parse data from Firebase.")
