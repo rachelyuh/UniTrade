@@ -131,7 +131,7 @@ struct ActivitiesContentView: View {
                             }
                         }.padding(.leading, 30)
                     }
-                    .navigationBarTitle("Listings")
+                    .navigationBarTitle("UniTrade")
                     .navigationBarItems(trailing:
                     Button(action: {
                         self.settings.loggedIn = false

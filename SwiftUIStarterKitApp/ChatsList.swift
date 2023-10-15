@@ -19,8 +19,12 @@ struct ChatsList: View {
                             ChatItem(name: chat)
                         }
                     }
-                    .navigationBarTitle("Conversations")
             }
+        .navigationBarItems(trailing: Button("Log Out", action: {
+            AccountView.loggedOut = true
+        }))
+        .navigationBarTitle("Conversations")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -37,7 +41,7 @@ struct ChatItem: View {
         VStack(alignment: .leading) {
             Text(name)
                 .font(.headline)
-            Text("Last message here") // You can replace this with the actual last message
+            Text("Matt lu is so cool") // You can replace this with the actual last message
                 .font(.subheadline)
                 .foregroundColor(.gray)
         }

@@ -72,6 +72,7 @@ class FirebaseTest: ObservableObject{
         // Observe changes in the specified location
         specificRef.observeSingleEvent(of: .value) { snapshot in
                 if let value = snapshot.value as? [String: Any] {
+                    
                     // Successfully retrieved data and cast it to a dictionary
                     completion(value)
                 } else {

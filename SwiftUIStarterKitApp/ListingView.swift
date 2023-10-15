@@ -17,7 +17,7 @@ struct ListingType {
     var selectedActivity: Bool
 }
 
-struct ListingInformation {
+struct ListingInformation : Identifiable {
     var id: String
     var listingName: String
     var listingDesc: String
@@ -56,7 +56,8 @@ class Listings: ObservableObject {
     init(items: [ListingType] ) {
         
         self.activities = items
-        self.activitiesCollection = [ListingData(id:0, activitiesPlaces: []), ListingData(id:1, activitiesPlaces: []), ListingData(id:2, activitiesPlaces: [])]
+        self.activitiesCollection = [ListingData(id:0, activitiesPlaces: []), ListingData(id:0, activitiesPlaces: []), ListingData(id:0, activitiesPlaces: [])]
+        var bigData: [ListingData] = [ListingData(id:0, activitiesPlaces: [])]
         var arr: [ListingInformation] = []
         
     
@@ -75,6 +76,7 @@ class Listings: ObservableObject {
                         let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
                         arr.append(tempObj)
                     }
+                    //self.activitiesCollection.append(ListingData(id:1, activitiesPlaces: arr))
                     self.activitiesCollection[1] = ListingData(id:1, activitiesPlaces: arr)
                 
                 } else {
@@ -95,15 +97,16 @@ class Listings: ObservableObject {
                 if let goodData = data as? [String: [String: Any]] {
                     for (key, data) in goodData{
                         let id = data["objectId"] as! String
-                        let listingName = data["productName"] as! String
+                        let listingName = data["serviceName"] as! String
                         let listingDesc = data["description"] as! String
                         let seller = data["username"] as! String
                         let price = data["price"] as! Float
                         let image = data["image"] as! String
+                        
                         let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
                         arr.append(tempObj)
                     }
-                    self.activitiesCollection[1] = ListingData(id:1, activitiesPlaces: arr)
+                    self.activitiesCollection[2] = ListingData(id:1, activitiesPlaces: arr)
                 
                 } else {
                     print("Failed to parse data from Firebase.")
@@ -114,6 +117,7 @@ class Listings: ObservableObject {
             }
 
         }
+        //self.activitiesCollection = bigData
     }
 }
 
@@ -194,7 +198,8 @@ struct ListingView: View {
                         }
                         
                     }
-                    .navigationBarTitle("Listings")
+                    .navigationBarTitle("UniTrade")
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarItems(trailing:
                     Button(action: {
                         self.settings.loggedIn = false
@@ -202,6 +207,7 @@ struct ListingView: View {
                         Text("Log Out")
                     })
             }.sheet(isPresented: self.$isShowing) { ListingDetailView(placeItem: self.$placeItemSelected)}
+                .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -212,7 +218,7 @@ struct MarketBestSellerViews: View {
     
     var body: some View {
             VStack{
-                Image("\(listingInfo.image)").renderingMode(.original)
+                Image("download").renderingMode(.original)
                         .resizable()
                         .frame(width: 155, height: 180)
                         .background(Color.black)
