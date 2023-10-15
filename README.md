@@ -1,5 +1,3 @@
-# swiftui-bootstrap
+# UniTrade
 
-SwiftUI Bootstrap Project to Start Your Next App Quickly
-
-Created by <a href="https://iosapptemplates.com">iOS templates</a> with help from <a href="https://instamobile.io">React Native Templates</a>
+Download UniTrade now and unlock the full potential of your college life!
