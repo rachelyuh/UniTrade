@@ -207,6 +207,7 @@ struct ListingView: View {
                         Text("Log Out")
                     })
             }.sheet(isPresented: self.$isShowing) { ListingDetailView(placeItem: self.$placeItemSelected)}
+                .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -217,7 +218,7 @@ struct MarketBestSellerViews: View {
     
     var body: some View {
             VStack{
-                Image("\(listingInfo.image)").renderingMode(.original)
+                Image("download").renderingMode(.original)
                         .resizable()
                         .frame(width: 155, height: 180)
                         .background(Color.black)
