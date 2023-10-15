@@ -12,31 +12,68 @@ struct TabbarView: View {
     var body: some View {
         TabView {
             NavigationView {
-                ActivitiesContentView(activtiesData: Activities(data: ActivitiesMockStore.activityData, items: ActivitiesMockStore.activities))
+                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
             }
             .tag(0)
             .tabItem {
-                Image("activity-1")
-                    .resizable()
-                Text("Activities")
+                Image(systemName: "house.fill")
+                    .font(.system(size: 40))
+                    .padding(.top, 8)
+                    .padding(.leading, 5)
+                    .padding(.trailing, 5)
+                Text("Home")
             }
             
             NavigationView {
-                ActivitiesCartView(ShoppingCartItemsData: ActivitiesCart(data: ActivitiesMockStore.shoppingCartData))
+                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
             }
             .tag(1)
             .tabItem {
-                Image("shopping-cart-icon")
-                Text("Cart")
+                Image(systemName: "magnifyingglass")
+                    .font(.system(size: 40))
+                    .padding(.top, 8)
+                    .padding(.leading, 5)
+                    .padding(.trailing, 5)
+                Text("Search")
+            }
+            
+            NavigationView {
+                CreateListing()
+            }
+            .tag(2)
+            .tabItem {
+                Image(systemName: "plus.circle")
+                    .font(.system(size: 40))
+                    .padding(.top, 8)
+                    .padding(.leading, 5)
+                    .padding(.trailing, 5)
+                Text("Add Post")
+            }
+            
+            NavigationView {
+                ChatsList()
+            }
+            .tag(3)
+            .tabItem {
+                Image(systemName: "message.fill")
+                    .font(.system(size: 40))
+                    .padding(.top, 8)
+                    .padding(.leading, 5)
+                    .padding(.trailing, 5)
+                Text("Chat")
             }
             
             NavigationView {
                      AccountView()
                   }
-                   .tag(2)
+                   .tag(4)
                     .tabItem {
-                    Image("profile-glyph-icon")
-                    Text("Account")
+                    Image(systemName: "person.fill")
+                            .font(.system(size: 40))
+                            .padding(.top, 8)
+                            .padding(.leading, 5)
+                            .padding(.trailing, 5)
+                    Text("Profile")
                 }
         }
     }
@@ -44,9 +81,8 @@ struct TabbarView: View {
 
 
 
-
 struct Previews_TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        TabbarView()
     }
 }

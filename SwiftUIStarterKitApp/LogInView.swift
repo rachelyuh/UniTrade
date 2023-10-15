@@ -49,9 +49,8 @@ struct LogInView: View {
                         .textContentType(.password)
                         .cornerRadius(5)
                     
-                    Button(action: {
-                        self.settings.loggedIn = true
-                    }) {
+                    NavigationLink(destination: ContentView())
+                    {
                         HStack {
                             Text("Log In")
                         }

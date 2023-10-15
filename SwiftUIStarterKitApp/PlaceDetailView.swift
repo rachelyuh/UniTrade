@@ -112,3 +112,9 @@ struct PlacesDetail: View {
         }
     }
 }
+
+//struct Previews_PlaceDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        PlaceDetailView()
+//    }
+

@@ -84,43 +84,44 @@ struct ActivitiesContentView: View {
     @State var isShowing: Bool = false
     @State var placeItemSelected: ActivitiesPlaces? = nil
     
+    private let twoColumnGrid = [
+        GridItem(.flexible(minimum: 150), spacing: 10),
+        GridItem(.flexible(minimum: 150), spacing: 10),
+    ]
+
+    
     var body: some View {
         GeometryReader { g in
             ScrollView{
                     VStack(alignment: .leading) {
-                        ScrollView(.horizontal, showsIndicators: false) {
                             HStack (spacing: 10){
                                 ForEach(self.activtiesData.activities, id: \.id) { item in
                                     ShopPromotionBannerView(activtiesItems: item, selectedActivity: self.selectedActivity)
-                                            .frame(width: 120, height: 60)
+                                            .frame(width: 107, height: 60)
                                 }
                             }.padding(.leading, 30)
                             .padding(.trailing, 30)
                             .padding(.bottom, 10)
-                        }
-                        .padding(.top, 20)
                         
-                        Text("\(self.activtiesData.activities[self.selectedActivity.index].activityNameLabel) Regions")
+                        Text("\(self.activtiesData.activities[self.selectedActivity.index].activityNameLabel) Listings")
                             .font(.system(size: 20))
                             .padding(.leading, 30)
                             .padding(.top, 10)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack (spacing: 10) {
-                                        ForEach(self.activtiesData.activitiesCollection[self.selectedActivity.index].activitiesPlaces, id: \.id) { item in
-                                            Button(action: {
-                                                self.placeItemSelected = item
-                                                self.isShowing = true
-                                            }) {
-                                                ShopBestSellerViews(activityPlaces: item)
-                                                                    .frame(width: 155, height: 225)
+                        ScrollView(.vertical, showsIndicators: false) {
+                                    LazyVGrid(columns: twoColumnGrid, spacing: 10) {
+                                            ForEach(self.activtiesData.activitiesCollection[self.selectedActivity.index].activitiesPlaces, id: \.id) { item in
+                                                Button(action: {
+                                                    self.placeItemSelected = item
+                                                    self.isShowing = true
+                                                }) {
+                                                    ShopBestSellerViews(activityPlaces: item)
+                                                        .frame(width: 150, height: 200)
+                                                }.padding(.bottom, 10)
                                             }
-                                        }
-                                        
                                 }.padding(.leading, 30)
                                  .padding(.trailing, 30)
                                  .padding(.bottom, 10)
-                                
                         }
                         
                         VStack (spacing: 20) {
@@ -129,19 +130,13 @@ struct ActivitiesContentView: View {
                                          .frame(width: g.size.width - 60, height: g.size.width - 60)
                             }
                         }.padding(.leading, 30)
-                        
-                        
                     }
-                    .navigationBarTitle("Activities")
+                    .navigationBarTitle("Listings")
                     .navigationBarItems(trailing:
                     Button(action: {
                         self.settings.loggedIn = false
                     }) {
-                        NavigationLink(destination: LogInView()) {
-                            
-                                           Text("Log Out")
-                                               .foregroundColor(.blue)
-                                       }
+                        Text("Log Out")
                     })
             }.sheet(isPresented: self.$isShowing) { PlaceDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
@@ -156,7 +151,7 @@ struct ShopBestSellerViews: View {
             ZStack{
                 Image("\(activityPlaces.activityPlaceImage)").renderingMode(.original)
                         .resizable()
-                        .frame(width: 155, height: 225)
+                        .frame(width: 155, height: 200)
                         .background(Color.black)
                         .cornerRadius(10)
                         .opacity(0.8)
@@ -237,7 +232,6 @@ struct ShopNewProductViews: View {
                         
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack (spacing: 10) {
-                            
                             ForEach(self.activityResources.resources, id: \.id) { item in
                                 ActivityResourceItems(resourceItems: item)
                                                     .frame(width: 150, height: 200)
@@ -283,8 +277,3 @@ struct ActivityResourceItems: View {
     }
 }
 
-struct Previews_ActivitiesContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("Hello, World!")
-    }
-}
