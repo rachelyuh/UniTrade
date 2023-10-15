@@ -101,7 +101,7 @@ struct ContentView: View {
                                            .padding(.leading, 5)
                                            .padding(.trailing, 5)
                                    }
-                                   NavigationLink(destination: AccountView()) {
+                                   NavigationLink(destination: AccountView(globalIdentity: "")) {
                                        Image(systemName: "person.fill")
                                            .font(.system(size: 40))
                                            .padding(.top, 8)

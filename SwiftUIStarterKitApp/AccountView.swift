@@ -9,18 +9,31 @@
 import SwiftUI
 
 struct AccountView: View {
+    
+    var globalIdentity: String
+    
+    
     @State var notificationToggle: Bool = false
     @State var locationUsage: Bool = false
-    @State var username: String = "James"
+    @State var username: String = "f"
+    @State var name: String = "j"
     @State var selectedCurrency: Int = 0
     @State public var editProfile = false
 
     let items = Array(1...12) // Example data
     
+    @State
+    var viewModel = FirebaseTest();
+    
+    
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
+                    Spacer()
+                    Spacer()
+                    Spacer()
                     HStack {
                         Image("italy")
                             .resizable()
@@ -30,11 +43,19 @@ struct AccountView: View {
                             .padding(.bottom, 10)
                             .padding(.leading, 30)
                         VStack {
-                            Text("Bob Appleseed")
+                            Text(name)
+                                .onAppear {
+                                    // This function will run when the view appears
+                                    updateMyVariable()
+                                }
                                 .font(.system(size: 30))
                                 .padding(.leading, 10)
                                 .padding(.top, 10)
-                            Text("@bobappleseed")
+                            Text("@\(username)")
+                                .onAppear {
+                                    // This function will run when the view appears
+                                    updateMyVariable()
+                                }
                                 .padding(.leading, 0)
                                 .padding(.bottom, 1)
                             
@@ -61,6 +82,7 @@ struct AccountView: View {
                         }
                         Spacer()
                     }
+                
                     HStack {
                         Text("Seller Rating")
                             .padding(.leading, 20)
@@ -120,20 +142,26 @@ struct AccountView: View {
                     .padding()
                 }
                 
+                
+                
+            }
+         
+        }
+    }
+    func updateMyVariable() {
+        viewModel.getUserData(username: globalIdentity) { dictionary in
+            if let data = dictionary {
+                print("Data retrieved from Firebase:")
+                name = data["name"] as! String
+                username = data["username"] as! String
+            } else {
+                print("Failed to retrieve data from Firebase.")
             }
         }
-        .navigationBarTitle("UniTrade")
-        .navigationBarTitleDisplayMode(.inline)
     }
  }
 
 
-
-struct Previews_AccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountView()
-    }
-}
 
 struct StarView: View {
     let isFilled: Bool
@@ -158,5 +186,11 @@ struct RatingView: View {
                     }
             }
         }
+    }
+}
+
+struct Previews_AccountView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountView(globalIdentity: "")
     }
 }

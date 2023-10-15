@@ -69,7 +69,7 @@ struct TabbarView: View {
             }
             
             NavigationView {
-                     AccountView()
+                     AccountView(globalIdentity: globalIdentity)
                   }
                    .tag(4)
                     .tabItem {

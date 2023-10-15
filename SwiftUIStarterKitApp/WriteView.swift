@@ -20,13 +20,16 @@ struct WriteView: View{
     @State
     var content: String = ""
     
+    
+    
+    
     var body: some View{
         VStack{
             TextEditor(text: $content)
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                viewModel.getUserData(username: globalIdentity)
+                //viewModel.getUserData(username: "BOBBYKIM")
             } label: {
                 Text("Get Data")
                     .padding()

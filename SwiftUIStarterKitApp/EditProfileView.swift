@@ -17,7 +17,7 @@ struct EditProfileView: View {
     @State private var number = ""
 
     var body: some View {
-        let accountView = AccountView()
+        let accountView = AccountView(globalIdentity: "")
         NavigationView {
             Form {
                 Section(header: Text("Personal Information")) {
