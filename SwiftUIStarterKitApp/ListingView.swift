@@ -24,7 +24,6 @@ struct ListingInformation : Identifiable {
     var seller: String
     var price: Float
     var image: String
-   
 }
 
 
@@ -35,7 +34,6 @@ struct ListingData {
 
 class Listings: ObservableObject {
 
-    
     let objectWillChange = PassthroughSubject<Void, Never>()
     
     var activitiesCollection : [ListingData] {
@@ -78,6 +76,7 @@ class Listings: ObservableObject {
                     }
                     //self.activitiesCollection.append(ListingData(id:1, activitiesPlaces: arr))
                     self.activitiesCollection[1] = ListingData(id:1, activitiesPlaces: arr)
+                    print(self.activitiesCollection[1])
                 
                 } else {
                     print("Failed to parse data from Firebase.")
@@ -89,7 +88,36 @@ class Listings: ObservableObject {
 
         }
         
-        arr = []
+        var arr1: [ListingInformation] = []
+        viewModel.getServiceData() { dictionary in
+            if let data = dictionary as? [String: Any] {
+                print("Data retrieved from Firebase:")
+                print(data)
+                if let goodData = data as? [String: [String: Any]] {
+                    for (key, data) in goodData{
+                        let id = data["objectId"] as! String
+                        let listingName = data["serviceName"] as! String
+                        let listingDesc = data["description"] as! String
+                        let seller = data["username"] as! String
+                        let price = data["price"] as! Float
+                        let image = data["image"] as! String
+                        
+                        let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
+                        arr1.append(tempObj)
+                    }
+                    self.activitiesCollection[2] = ListingData(id:2, activitiesPlaces: arr1)
+//                    print(self.activitiesCollection[2])
+                
+                } else {
+                    print("Failed to parse data from Firebase.")
+                }
+                
+            } else {
+                print("Failed to retrieve data from Firebase.")
+            }
+
+        }
+        
         viewModel.getServiceData() { dictionary in
             if let data = dictionary as? [String: Any] {
                 print("Data retrieved from Firebase:")
@@ -102,11 +130,12 @@ class Listings: ObservableObject {
                         let seller = data["username"] as! String
                         let price = data["price"] as! Float
                         let image = data["image"] as! String
-                        
                         let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
                         arr.append(tempObj)
                     }
-                    self.activitiesCollection[2] = ListingData(id:1, activitiesPlaces: arr)
+                    //self.activitiesCollection.append(ListingData(id:1, activitiesPlaces: arr))
+                    self.activitiesCollection[0] = ListingData(id:1, activitiesPlaces: arr)
+                    print(self.activitiesCollection[0])
                 
                 } else {
                     print("Failed to parse data from Firebase.")
@@ -156,20 +185,31 @@ struct ListingView: View {
                             .padding(.leading, 30)
                             .padding(.top, 10)
                             .padding(.bottom, 10)
-                        
+                    
                         ScrollView(.vertical, showsIndicators: false) {
                                     LazyVGrid(columns: twoColumnGrid, spacing: 10) {
+                                        
                                         if(self.selectedActivity.index == 0){
                                             //prob fix the way this is diplayed bc currently just products then services
-                                            ForEach(self.activtiesData.activitiesCollection[1].activitiesPlaces, id: \.id) { item in
+//                                            ForEach(self.activtiesData.activitiesCollection[1].activitiesPlaces, id: \.id) { item in
+//                                                Button(action: {
+//                                                    self.placeItemSelected = item
+//                                                    self.isShowing = true
+//                                                }) {
+//                                                        MarketBestSellerViews(listingInfo: item)
+//                                                            .frame(width: 150, height: 200).padding(.bottom, 0)
+//                                                }.padding(.bottom, 10)
+//                                            }
+                                            ForEach(self.activtiesData.activitiesCollection[0].activitiesPlaces, id: \.id) { item in
                                                 Button(action: {
                                                     self.placeItemSelected = item
                                                     self.isShowing = true
                                                 }) {
-                                                        MarketBestSellerViews(listingInfo: item)
-                                                            .frame(width: 150, height: 200).padding(.bottom, 0)
+                                                    MarketBestSellerViews(listingInfo: item)
+                                                                        .frame(width: 150, height: 200)
                                                 }.padding(.bottom, 10)
                                             }
+                                        } else if (self.selectedActivity.index == 2) {
                                             ForEach(self.activtiesData.activitiesCollection[2].activitiesPlaces, id: \.id) { item in
                                                 Button(action: {
                                                     self.placeItemSelected = item
