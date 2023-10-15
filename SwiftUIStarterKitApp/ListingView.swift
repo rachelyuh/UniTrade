@@ -56,7 +56,7 @@ class Listings: ObservableObject {
     init(items: [ListingType] ) {
         
         self.activities = items
-        self.activitiesCollection = []
+        self.activitiesCollection = [ListingData(id:0, activitiesPlaces: []), ListingData(id:0, activitiesPlaces: []), ListingData(id:0, activitiesPlaces: [])]
         var bigData: [ListingData] = [ListingData(id:0, activitiesPlaces: [])]
         var arr: [ListingInformation] = []
         
@@ -76,7 +76,8 @@ class Listings: ObservableObject {
                         let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
                         arr.append(tempObj)
                     }
-                    bigData.append(ListingData(id:1, activitiesPlaces: arr))
+                    //self.activitiesCollection.append(ListingData(id:1, activitiesPlaces: arr))
+                    self.activitiesCollection[1] = ListingData(id:1, activitiesPlaces: arr)
                 
                 } else {
                     print("Failed to parse data from Firebase.")
@@ -96,15 +97,16 @@ class Listings: ObservableObject {
                 if let goodData = data as? [String: [String: Any]] {
                     for (key, data) in goodData{
                         let id = data["objectId"] as! String
-                        let listingName = data["productName"] as! String
+                        let listingName = data["serviceName"] as! String
                         let listingDesc = data["description"] as! String
                         let seller = data["username"] as! String
                         let price = data["price"] as! Float
                         let image = data["image"] as! String
+                        
                         let tempObj = ListingInformation(id: id, listingName: listingName, listingDesc: listingDesc, seller: seller, price: price, image: image)
                         arr.append(tempObj)
                     }
-                    bigData.append(ListingData(id:2, activitiesPlaces: arr))
+                    self.activitiesCollection[2] = ListingData(id:1, activitiesPlaces: arr)
                 
                 } else {
                     print("Failed to parse data from Firebase.")
@@ -115,7 +117,7 @@ class Listings: ObservableObject {
             }
 
         }
-        self.activitiesCollection = bigData
+        //self.activitiesCollection = bigData
     }
 }
 
