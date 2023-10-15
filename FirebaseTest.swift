@@ -6,33 +6,25 @@
 //  Copyright © 2023 NexThings. All rights reserved.
 //
 
-import Foundation
-import FirebaseDatabase
-import FirebaseDatabaseSwift
+import Firebase
 
 class FirebaseTest: ObservableObject{
     
-    private let ref = Database.database().reference()
-    
-    func checkExist(usaname: String){
-        //self.ref.child("user").setValue(value)
-        self.ref.child("UserProfiles").observeSingleEvent(of: .value, with: {snapshot in
-            guard let value = snapshot.value as? [String: Any] else{
-                return
-            }
-            var found: String = "ACCOUNT DOESN'T EXIST"
-            for (username, attributes) in value {
-                if (usaname == username) {
-                    found = "ACCOUNT EXISTS!!!"
-                    break
+    func keyExistsInFirebase(key: String, completion: @escaping (Bool) -> Void) {
+            // Reference to your Firebase Database
+            let databaseRef = Database.database().reference()
+
+            // Reference to the location you want to check (e.g., a specific node or key)
+            let specificRef = databaseRef.child("UserProfiles").child(key)
+
+            specificRef.observeSingleEvent(of: .value) { snapshot in
+                if snapshot.exists() {
+                    // The key exists in Firebase
+                    completion(true)
+                } else {
+                    // The key does not exist in Firebase
+                    completion(false)
                 }
-                
             }
-            print(found)
-    
-        })
-        
-        
-    }
-    
+        }
 }

@@ -21,6 +21,8 @@ struct SignUpView: View {
     @State var confirmPassword: String = ""
     @State private var showTermsAndPrivacy = false
     @State private var createComplete = false
+    @State var validAcc = false
+    @State private var navigateToHome = false
     
     var body: some View {
         NavigationView {
@@ -155,11 +157,12 @@ struct SignUpView: View {
                     Button(action: {
                         let filled = !name.isEmpty && !emailAddress.isEmpty && emailAddress.contains("@gatech.edu") && !password.isEmpty && !bio.isEmpty && !username.isEmpty && !confirmPassword.isEmpty && confirmPassword == password
                         if filled {
-                            checkExists.keyExistsInFirebase(key: username) { 
+                            checkExists.keyExistsInFirebase(key: username) {
                                 exists in
                                 if exists {
                                     filledVar = "Account Already Exists"
                                 } else {
+                                    validAcc = true
                                     filledVar = ""
                                     viewModel.pushNewUser(username: username, name: name, pfp: "fakepfp", bio: bio, password: password, email: emailAddress, productList: [1,4], serviceList: [2,3])
                                 }
@@ -171,14 +174,20 @@ struct SignUpView: View {
                             filledVar = "Not all required fields are filled!"
                         }
                     }) {
-                        NavigationLink(destination: LogInView()) {
                             Text("Create Account")
                                 .padding()
                                 .frame(width: geometry.size.width - 40, height: 40)
                                 .foregroundColor(Color.white)
                                 .background(Color.blue)
                                 .cornerRadius(5)
-                        }
+                                .alert(isPresented: $validAcc) {
+                                    Alert(title: Text("Proceed?"), message: Text("Confirm Account"), primaryButton: .default(Text("Accept"), action: {
+                                        navigateToHome = true
+                                    }), secondaryButton: .default(Text("Decline")))
+                                }
+                        NavigationLink(destination: LogInView(), isActive: $navigateToHome) {
+                                            EmptyView()
+                                }
                     }.padding(.bottom, 40)
                     
                     
