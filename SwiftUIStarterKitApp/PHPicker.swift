@@ -7,13 +7,18 @@ A class that responds to Photos picker events.
 
 import SwiftUI
 import PhotosUI
+import Firebase
+import FirebaseDatabase
+import FirebaseStorage
+
 
 /// A view model that integrates a Photos picker.
 @MainActor final class ContentViewModel: ObservableObject {
     
+    
     /// A class that manages an image that a person selects in the Photos picker.
     @MainActor final class ImageAttachment: ObservableObject, Identifiable {
-        
+        @Published var selectedData: Data
         /// Statuses that indicate the app's progress in loading a selected photo.
         enum Status {
         
@@ -41,7 +46,7 @@ import PhotosUI
         }
         
         /// A reference to a selected photo in the picker.
-        private let pickerItem: PhotosPickerItem
+        public let pickerItem: PhotosPickerItem
         
         /// A load progress for the photo.
         @Published var imageStatus: Status?
@@ -57,8 +62,13 @@ import PhotosUI
         /// Creates an image attachment for the given picker item.
         init(_ pickerItem: PhotosPickerItem) {
             self.pickerItem = pickerItem
+            self.selectedData = Data()
         }
         
+     
+
+   
+ 
         /// Loads the photo that the picker item features.
         func loadImage() async {
             guard imageStatus == nil || imageStatus?.isFailed == true else {
@@ -68,13 +78,17 @@ import PhotosUI
             do {
                 if let data = try await pickerItem.loadTransferable(type: Data.self),
                    let uiImage = UIImage(data: data) {
+                    selectedData = data
+                    print("selectedimage")
                     imageStatus = .finished(Image(uiImage: uiImage))
+                    
                 } else {
                     throw LoadingError.contentTypeNotSupported
                 }
             } catch {
                 imageStatus = .failed(error)
             }
+            
         }
     }
     
@@ -102,12 +116,12 @@ import PhotosUI
     @Published var attachments = [ImageAttachment]()
     
     /// A dictionary that stores previously loaded attachments for performance.
-    private var attachmentByIdentifier = [String: ImageAttachment]()
+    public var attachmentByIdentifier = [String: ImageAttachment]()
 }
 
 /// A extension that handles the situation in which a picker item lacks a photo library.
 @available(iOS 16.0, *)
-private extension PhotosPickerItem {
+public extension PhotosPickerItem {
     var identifier: String {
         guard let identifier = itemIdentifier else {
             fatalError("The photos picker lacks a photo library.")

@@ -9,6 +9,10 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseDatabaseSwift
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseStorage
+//import FirebaseAuth
 
 class WriteData: ObservableObject{
     
@@ -36,15 +40,16 @@ class WriteData: ObservableObject{
         self.ref.child("Products").child(objectId).child("category").setValue(category)
     }
     
-
-    func pushNewProduct(objectId: String, username: String, servName: String, description: String, price: Float, image: String, category: [String]){
-        self.ref.child("Products").child(objectId).child("objectId").setValue(objectId)
-        self.ref.child("Products").child(objectId).child("username").setValue(username)
-        self.ref.child("Products").child(objectId).child("serviceName").setValue(servName)
-        self.ref.child("Products").child(objectId).child("description").setValue(description)
-        self.ref.child("Products").child(objectId).child("price").setValue(price)
-        self.ref.child("Products").child(objectId).child("image").setValue(image)
-        self.ref.child("Products").child(objectId).child("category").setValue(category)
+        
+    
+    func pushNewService(objectId: String, username: String, servName: String, description: String, price: Float, image: String, category: [String]){
+        self.ref.child("Services").child(objectId).child("objectId").setValue(objectId)
+        self.ref.child("Services").child(objectId).child("username").setValue(username)
+        self.ref.child("Services").child(objectId).child("serviceName").setValue(servName)
+        self.ref.child("Services").child(objectId).child("description").setValue(description)
+        self.ref.child("Services").child(objectId).child("price").setValue(price)
+        self.ref.child("Services").child(objectId).child("image").setValue(image)
+        self.ref.child("Services").child(objectId).child("category").setValue(category)
     }
     
     func pushAppData(userCount: Int, prodCount: Int, servCount: Int){

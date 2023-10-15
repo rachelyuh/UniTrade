@@ -8,12 +8,19 @@
 
 import SwiftUI
 import PhotosUI
+import FirebaseStorage
+import Firebase
+import FirebaseDatabase
+import UIKit
 
 struct CreateListing: View {
     @State var title: String = ""
     @State var description: String = ""
-    @State var listing: String = ""
+    @State var listing: Int = 0
     @State var listingTypes: [String] = ["Product", "Service"]
+    @State private var selectedImage: UIImage? // Replace with your image source
+    
+    var firebaseModel = WriteData()
 
     @State var price: Double = 0.0
     
@@ -46,7 +53,7 @@ struct CreateListing: View {
                                 .cornerRadius(5)
                         }
                         
-                        TextField("Add a description here...", text: self.$title)
+                        TextField("Add a description here...", text: self.$description)
                             .frame(height: 100)
                             .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                             .accentColor(.black)
@@ -68,32 +75,86 @@ struct CreateListing: View {
                             }
                         }
                     }
-                    Section(header: Text("Optional Information")) {
-                            VStack {
-                                // Define a list for photos and descriptions.
-                                ImageList(viewModel: viewModel)
-                                
-                                // Define the app's Photos picker.
-                                PhotosPicker(
-                                    selection: $viewModel.selection,
-                                    selectionBehavior: .continuousAndOrdered,
-                                    matching: .images,
-                                    preferredItemEncoding: .current,
-                                    photoLibrary: .shared()
-                                ) {
-                                    Text("Insert Photos")
-                                }
-                                .frame(height: 200)
+                    Section(header: Text("Photos")) {
+                        VStack {
+                            // Define a list for photos and descriptions.
+                            ImageList(viewModel: viewModel)
+                        }
+                        .frame(height: 250)
+                            // Define the app's Photos picker.
+                            PhotosPicker(
+                                selection: $viewModel.selection,
+                                selectionBehavior: .continuousAndOrdered,
+                                matching: .images,
+                                preferredItemEncoding: .current,
+                                photoLibrary: .shared()
+                            ) {
+                                Text("Insert Photos")
                             }
-                    }
-                    Button("Submit") {
+                            .frame(height: 10)
+                            .onAppear {
+                                viewModel.attachments = viewModel.selection.map { item in
+                                    // Access an existing attachment, if it exists; otherwise, create a new attachment.
+                                    return viewModel.attachmentByIdentifier[item.identifier] ?? ContentViewModel.ImageAttachment(item)
+                                }
                         
                     }
+                        Button("Submit") {
+                
+                            guard let selectedData = viewModel.attachments.first?.selectedData else {
+                                print("No image selected")
+                                return
+                            }
+                           
+                            guard let imageData = UIImage(data: selectedData), let jpegData = imageData.jpegData(compressionQuality: 0.8) else {
+                                print("Failed to convert image to data")
+                                return
+                            }
+                            let storage = Storage.storage()
+                            let storageRef = storage.reference().child("images").child("objectID.jpg")
+                            
+                            let uploadTask = storageRef.putData(jpegData, metadata: nil) { metadata, error in
+                                if let error = error {
+                                    print("Error uploading image to Firebase Storage: \(error.localizedDescription)")
+                                } else {
+                                    storageRef.downloadURL { url, error in
+                                        if let downloadURL = url {
+                                            let imageURL = downloadURL.absoluteString
+                                            let imageDescription = "A description for the uploaded image"
+                                            if listingTypes[listing] == "Product" {
+                                                firebaseModel.pushNewProduct(objectId: "content",  username: "username", prodName: title, description: description, price: Float(price),  image: imageURL,  category: ["t"])
+                                            } else{
+                                                firebaseModel.pushNewService(objectId: "content",  username: "username", servName: title, description: description, price: Float(price),  image: imageURL,  category: ["t"])
+                                            }
+//
+                                        } else if let error = error {
+                                            print("Error getting download URL: \(error.localizedDescription)")
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+//                        .task {
+//                            await viewModel.att.loadImage()
+//                        }
+//                        
+                        
+                        
+                        
+                        
+                    }
+                    
                 }
             }
         }
     }
+    
+    
 }
+
+
 
 // A view that lists selected photos and their descriptions.
     struct ImageList: View {
@@ -124,6 +185,7 @@ struct ImageAttachmentView: View {
             
             // Define text that describes a selected photo.
             TextField("Image Description", text: $imageAttachment.imageDescription)
+    
             
             // Add space after the description.
             Spacer()
@@ -143,6 +205,7 @@ struct ImageAttachmentView: View {
         }
     }
 }
+
 
 #Preview {
     CreateListing()

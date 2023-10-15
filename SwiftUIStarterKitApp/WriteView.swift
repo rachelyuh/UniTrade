@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-
 struct WriteView: View{
     
     @StateObject
