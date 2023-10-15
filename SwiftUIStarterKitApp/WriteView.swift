@@ -12,6 +12,8 @@ import SwiftUI
 
 struct WriteView: View{
     
+    var globalIdentity: String
+    
     @StateObject
     var viewModel = FirebaseTest()
     
@@ -24,15 +26,9 @@ struct WriteView: View{
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                viewModel.keyExistsInFirebase(key: content) { exists in
-                    if exists {
-                        print("The key exists in Firebase")
-                    } else {
-                        print("The key does not exist in Firebase")
-                    }
-                }
+                viewModel.getUserData(username: globalIdentity)
             } label: {
-                Text("Push")
+                Text("Get Data")
                     .padding()
             }
 
@@ -42,7 +38,7 @@ struct WriteView: View{
 
 struct Write_Preview: PreviewProvider{
     static var previews: some View{
-        WriteView()
+        WriteView(globalIdentity: "globalIdentity")
     }
     
 }

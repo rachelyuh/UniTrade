@@ -12,8 +12,10 @@ import UIKit
 struct LogInView: View {
     @EnvironmentObject var settings: UserSettings
     
-    @State  private var emailAddress: String = ""
-    @State  private var password: String = ""
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var canGo = false
+    @State private var alert: String = ""
     
     var body: some View {
         NavigationView {
@@ -32,7 +34,7 @@ struct LogInView: View {
                         .font(.system(size: 14, weight: .bold, design: Font.Design.default))
                         .padding(.bottom, 50)
                     
-                    TextField("Email", text: self.$emailAddress)
+                    TextField("Email", text: self.$username)
                         .frame(width: geometry.size.width - 45, height: 50)
                         .textContentType(.emailAddress)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
@@ -41,7 +43,7 @@ struct LogInView: View {
                         .cornerRadius(5)
                     
                     
-                    TextField("Password", text: self.$password)
+                    SecureField("Password", text: self.$password)
                         .frame(width: geometry.size.width - 45, height: 50)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
                         .foregroundColor(.gray)
@@ -49,8 +51,22 @@ struct LogInView: View {
                         .textContentType(.password)
                         .cornerRadius(5)
                     
-                    NavigationLink(destination: ContentView())
-                    {
+                    
+                    @StateObject
+                    var checkExists = FirebaseTest()
+                    
+                    Button(action:{
+                        checkExists.userPasswordMatch(username: username, password: password) { exists in
+                            if exists {
+                                canGo = true
+                                alert = ""
+                                password = ""
+                                
+                            } else {
+                                alert = "Username or password doesn't match"
+                            }
+                        }
+                    }){
                         HStack {
                             Text("Log In")
                         }
@@ -59,8 +75,17 @@ struct LogInView: View {
                         .foregroundColor(Color.white)
                         .background(Color.blue)
                         .cornerRadius(5)
+                    }.padding(.bottom, 0)
+                    
+                    
+                    NavigationLink(destination: WriteView(globalIdentity: username), isActive: $canGo){
                     }
-                    .padding(.bottom, 0)
+                    
+                    
+                    Text(alert)
+                        .foregroundColor(.red)
+                        .font(.system(size: 12))
+                        .padding()
                     
                     Button(action: {
                         print("Take to forget password VC")
@@ -78,7 +103,7 @@ struct LogInView: View {
                 .padding(.bottom, 90)
             }
         }
-        .navigationBarBackButtonHidden(true)
+        
     }
 }
 

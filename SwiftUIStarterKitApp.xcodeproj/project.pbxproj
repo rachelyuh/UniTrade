@@ -13,6 +13,16 @@
 		287368B92ADA2A200042A486 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 287368B82ADA2A200042A486 /* FirebaseDatabaseSwift */; };
 		287368BB2ADA2A380042A486 /* WriteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287368BA2ADA2A380042A486 /* WriteData.swift */; };
 		287368BD2ADA37C40042A486 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287368BC2ADA37C40042A486 /* WriteView.swift */; };
+		2888A9E22ADB84C200F36FF2 /* TermsAndPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9E12ADB84C100F36FF2 /* TermsAndPrivacyView.swift */; };
+		2888A9E62ADB85A100F36FF2 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9E32ADB85A100F36FF2 /* ListingView.swift */; };
+		2888A9E72ADB85A100F36FF2 /* ListingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9E42ADB85A100F36FF2 /* ListingDetailView.swift */; };
+		2888A9E82ADB85A100F36FF2 /* ListingMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9E52ADB85A100F36FF2 /* ListingMarket.swift */; };
+		2888A9EE2ADB85E700F36FF2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9E92ADB85E700F36FF2 /* ChatViewController.swift */; };
+		2888A9EF2ADB85E700F36FF2 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9EA2ADB85E700F36FF2 /* EditProfileView.swift */; };
+		2888A9F02ADB85E700F36FF2 /* ChatsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9EB2ADB85E700F36FF2 /* ChatsList.swift */; };
+		2888A9F12ADB85E700F36FF2 /* PHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9EC2ADB85E700F36FF2 /* PHPicker.swift */; };
+		2888A9F22ADB85E700F36FF2 /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9ED2ADB85E700F36FF2 /* PaymentOptions.swift */; };
+		2888A9F42ADB86A700F36FF2 /* CreateListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888A9F32ADB86A700F36FF2 /* CreateListing.swift */; };
 		782B76D22ADAA06600ABFF3A /* FirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B76D12ADAA06600ABFF3A /* FirebaseTest.swift */; };
 		F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */; };
 		F5143EB22301F435008D8C89 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5143EB12301F435008D8C89 /* BlurView.swift */; };
@@ -55,6 +65,16 @@
 		287368B32ADA29E30042A486 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		287368BA2ADA2A380042A486 /* WriteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteData.swift; sourceTree = "<group>"; };
 		287368BC2ADA37C40042A486 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
+		2888A9E12ADB84C100F36FF2 /* TermsAndPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndPrivacyView.swift; sourceTree = "<group>"; };
+		2888A9E32ADB85A100F36FF2 /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
+		2888A9E42ADB85A100F36FF2 /* ListingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailView.swift; sourceTree = "<group>"; };
+		2888A9E52ADB85A100F36FF2 /* ListingMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingMarket.swift; sourceTree = "<group>"; };
+		2888A9E92ADB85E700F36FF2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2888A9EA2ADB85E700F36FF2 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		2888A9EB2ADB85E700F36FF2 /* ChatsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsList.swift; sourceTree = "<group>"; };
+		2888A9EC2ADB85E700F36FF2 /* PHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPicker.swift; sourceTree = "<group>"; };
+		2888A9ED2ADB85E700F36FF2 /* PaymentOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptions.swift; sourceTree = "<group>"; };
+		2888A9F32ADB86A700F36FF2 /* CreateListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListing.swift; sourceTree = "<group>"; };
 		782B76D12ADAA06600ABFF3A /* FirebaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirebaseTest.swift; path = ../FirebaseTest.swift; sourceTree = "<group>"; };
 		F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCartView.swift; sourceTree = "<group>"; };
 		F5143EB12301F435008D8C89 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -131,6 +151,16 @@
 		F542B64722F2DBF200E490A1 /* SwiftUIStarterKitApp */ = {
 			isa = PBXGroup;
 			children = (
+				2888A9F32ADB86A700F36FF2 /* CreateListing.swift */,
+				2888A9EC2ADB85E700F36FF2 /* PHPicker.swift */,
+				2888A9E42ADB85A100F36FF2 /* ListingDetailView.swift */,
+				2888A9E52ADB85A100F36FF2 /* ListingMarket.swift */,
+				2888A9E32ADB85A100F36FF2 /* ListingView.swift */,
+				2888A9ED2ADB85E700F36FF2 /* PaymentOptions.swift */,
+				2888A9EA2ADB85E700F36FF2 /* EditProfileView.swift */,
+				2888A9E92ADB85E700F36FF2 /* ChatViewController.swift */,
+				2888A9EB2ADB85E700F36FF2 /* ChatsList.swift */,
+				2888A9E12ADB84C100F36FF2 /* TermsAndPrivacyView.swift */,
 				17244EBD2353DC4F00D31F7E /* UIScrollViewController.swift */,
 				F542B64822F2DBF200E490A1 /* AppDelegate.swift */,
 				F542B64A22F2DBF200E490A1 /* SceneDelegate.swift */,
@@ -321,6 +351,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2888A9F42ADB86A700F36FF2 /* CreateListing.swift in Sources */,
+				2888A9EE2ADB85E700F36FF2 /* ChatViewController.swift in Sources */,
+				2888A9EF2ADB85E700F36FF2 /* EditProfileView.swift in Sources */,
+				2888A9F02ADB85E700F36FF2 /* ChatsList.swift in Sources */,
+				2888A9F12ADB85E700F36FF2 /* PHPicker.swift in Sources */,
+				2888A9F22ADB85E700F36FF2 /* PaymentOptions.swift in Sources */,
+				2888A9E62ADB85A100F36FF2 /* ListingView.swift in Sources */,
+				2888A9E72ADB85A100F36FF2 /* ListingDetailView.swift in Sources */,
+				2888A9E82ADB85A100F36FF2 /* ListingMarket.swift in Sources */,
+				2888A9E22ADB84C200F36FF2 /* TermsAndPrivacyView.swift in Sources */,
 				F553995722F4998F00872F1B /* LogInView.swift in Sources */,
 				F552983522F8BBAE00C07997 /* ActivitiesMockStore.swift in Sources */,
 				287368BD2ADA37C40042A486 /* WriteView.swift in Sources */,
@@ -433,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -487,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -506,7 +546,7 @@
 				DEVELOPMENT_TEAM = Q98J247HTL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIStarterKitApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -527,7 +567,7 @@
 				DEVELOPMENT_TEAM = Q98J247HTL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIStarterKitApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -27,7 +27,61 @@ class FirebaseTest: ObservableObject{
                 }
             }
         }
+    
+    func userPasswordMatch(username: String, password: String, completion: @escaping (Bool) -> Void) {
+            // Reference to your Firebase Database
+        if (username == "" && password == "") {
+            completion(false)
+            return
+        }
+        let databaseRef = Database.database().reference()
 
+            // Reference to the location you want to check (e.g., a specific node or key)
+        let specificRef = databaseRef.child("UserProfiles")
+
+        specificRef.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.hasChild(username) {
+                    // The key exists in Firebase
+                let childSnapshot = snapshot.childSnapshot(forPath: username)
+                if let keyData = childSnapshot.value as? [String: Any], let storedValue = keyData["password"] as? String {
+                    if (storedValue == password) {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                } else {
+                        // The key exists, but the value does not match
+                    completion(false)
+                }
+            } else {
+                // The key does not exist in Firebase
+                completion(false)
+            }
+        }
+    }
+    
+    func getUserData(username: String){
+            // Reference to your Firebase Database
+        // Reference to your Firebase Database
+        let databaseRef = Database.database().reference()
+
+                // Reference to the location you want to read from (e.g., a specific node or key)
+        let specificRef = databaseRef.child("UserProfiles").child(username)
+
+                // Observe changes in the specified location
+        specificRef.observe(.value) { (snapshot) in
+                    // Check if the snapshot has any data
+            guard let value = snapshot.value as? [String: Any] else {
+                print("No data in this location.")
+                return
+            }
+
+                    // Loop through the keys and values and print them
+            for (key, value) in value {
+                print("\(key): \(value)")
+            }
+        }
+    }
 
 
 }
