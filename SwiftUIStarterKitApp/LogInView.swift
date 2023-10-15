@@ -103,7 +103,7 @@ struct LogInView: View {
                 .padding(.bottom, 90)
             }
         }
-        
+        .navigationBarBackButtonHidden(true)
     }
 }
 
