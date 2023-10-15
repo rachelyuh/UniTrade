@@ -49,7 +49,7 @@ struct LogInView: View {
                         .textContentType(.password)
                         .cornerRadius(5)
                     
-                    NavigationLink(destination: ContentView())
+                    NavigationLink(destination: TabbarView())
                     {
                         HStack {
                             Text("Log In")
