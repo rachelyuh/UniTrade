@@ -1,17 +1,12 @@
 //
-//  PlaceDetailView.swift
+//  ListingDetailView.swift
 //  SwiftUIStarterKitApp
 //
-//  Created by Osama Naeem on 11/08/2019.
-//  Copyright © 2019 NexThings. All rights reserved.
+//  Created by Hera Chung on 10/14/2023
 //
 
 import SwiftUI
 import Combine
-
-//class SelectedPoint: ObservableObject {
-//    @Published var selectedIndex: Int = 0
-//}
 
 struct ListingDetailView : View {
     @Binding var isShowing: Bool
@@ -22,66 +17,29 @@ struct ListingDetailView : View {
     
     var body: some View {
         GeometryReader { g in
-            ZStack {
-                Image(self.placeItem?.image ?? "")
-                    .resizable()
-                    .frame(width: g.size.width, height: g.size.height)
-                    .aspectRatio(contentMode: .fit)
-                    .opacity(0.3)
-                    .background(Color.black)
-                    .onDisappear {
-                        self.isShowing = false
-                }
+            VStack(alignment: .leading) {
+                Text("@" + (self.placeItem?.seller ?? self.defaultPoint.seller)).padding(.leading, 30).padding(.trailing, 30).padding(.top, 30)
                 
-                VStack(alignment: .leading) {
-                    Text(self.placeItem?.listingName ?? "")
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 30, weight: .bold, design: .default))
-                        .padding(.top, 34)
-                        .padding(.leading, 30)
-                    HStack{
-                        Spacer()
-                    }
-                    
+                HStack{
+                    Text(self.placeItem?.listingName ?? self.defaultPoint.listingName)
+                        .font(.system(size: 33, weight: .bold, design: .default))
                     Spacer()
-                    
-                    ListingDetail(listingInfo: self.placeItem ?? self.defaultPoint)
-                        .padding(.bottom, 50)
-//                    
-//                    ZStack {
-//                        BlurView(style: .light)
-//                            .frame(width: g.size.width, height: 130)
-//                        ScrollView(.horizontal, showsIndicators: false) {
-//                            HStack {
-//                                ForEach(self.placeItem?.famousPointsArray ?? [], id: \.id) { item in
-//                                    PlacesCircleView(placeItems: item, selectedPoint: self.selectedPoint)
-//                                }
-//                            }.frame(width: g.size.width, height: 130)
-//                        }
-//                    }.padding(.bottom, 50)
-                    
-                }
+                    Text("$ \((self.placeItem?.price ?? self.defaultPoint.price), specifier: "%.2f")").font(.system(size: 30, weight: .bold, design: .default))
+                }.padding(.leading, 30).padding(.trailing, 30).padding(.top, 1)
+                
+                Image(self.placeItem?.image ?? "")
+                        .renderingMode(.original)
+                        .resizable()
+                        .frame(width: g.size.width - 30, height: 400)
+                        .background(Color.white)
+                        .aspectRatio(contentMode: .fill)
+                        .padding(.bottom, 5)
+                        .padding(.leading, 15)
+                        .padding(.trailing, 15)
+                
+                Text(self.placeItem?.listingDesc ?? self.defaultPoint.listingName).padding(.leading, 30).padding(.trailing, 30)
             }
-        }
         .edgesIgnoringSafeArea(.bottom)
-    }
-}
-
-struct ListingDetail: View {
-    var listingInfo: ListingInformation
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(listingInfo.listingName)
-                .foregroundColor(Color.white)
-                .font(.system(size: 20, weight: .bold, design: Font.Design.default))
-                .padding(.bottom, 24)
-            HStack{
-                Text("Seller user: " + listingInfo.seller)
-                Spacer()
-                Text("$ \(listingInfo.price, specifier: "%.2f")")
-            }
-            Text(listingInfo.listingDesc)
         }
     }
 }

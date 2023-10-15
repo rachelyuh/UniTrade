@@ -24,7 +24,7 @@ class ListingMarket {
                          ListingInformation(id: 2, listingName: "Product 3", listingDesc: "sample description", seller: "abc123", price: 150, image: "snowbird")
             ]),
         ListingData(id: 1, activitiesPlaces:
-                        [ListingInformation(id: 0, listingName: "Used Bike", listingDesc: "sample description", seller: "abc123", price: 150, image: "snowbird"),
+                        [ListingInformation(id: 0, listingName: "Used Bike", listingDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", seller: "abc123", price: 150, image: "snowbird"),
                          ListingInformation(id: 1, listingName: "Product 2", listingDesc: "sample description", seller: "abc123", price: 150, image: "snowbird"),
                          ListingInformation(id: 2, listingName: "Product 3", listingDesc: "sample description", seller: "abc123", price: 150, image: "snowbird")
             ]),
