@@ -51,7 +51,7 @@ struct TabbarView: View {
             }
             
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                ChatsList()
             }
             .tag(3)
             .tabItem {

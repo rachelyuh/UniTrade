@@ -149,13 +149,23 @@ struct SignUpView: View {
                     @StateObject
                     var viewModel = WriteData()
                     
+                    @StateObject
+                    var checkExists = FirebaseTest()
+                    
                     Button(action: {
                         let filled = !name.isEmpty && !emailAddress.isEmpty && emailAddress.contains("@gatech.edu") && !password.isEmpty && !bio.isEmpty && !username.isEmpty && !confirmPassword.isEmpty && confirmPassword == password
-                        
                         if filled {
-                            filledVar = ""
-                            viewModel.pushNewUser(username: username, name: name, pfp: "fakepfp", bio: bio, password: password, email: emailAddress, productList: [1,4], serviceList: [2,3])
-                            createComplete = true
+                            checkExists.keyExistsInFirebase(key: username) { 
+                                exists in
+                                if exists {
+                                    filledVar = "Account Already Exists"
+                                } else {
+                                    filledVar = ""
+                                    viewModel.pushNewUser(username: username, name: name, pfp: "fakepfp", bio: bio, password: password, email: emailAddress, productList: [1,4], serviceList: [2,3])
+                                }
+                            }
+                                                
+                                
                         }
                         if !filled {
                             filledVar = "Not all required fields are filled!"

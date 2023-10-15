@@ -21,7 +21,11 @@
 		786998482ADB38FD00541234 /* TermsAndPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786998472ADB38FD00541234 /* TermsAndPrivacyView.swift */; };
 		78BD54CF2ADB6A8100CDEF3D /* StreamChat in Frameworks */ = {isa = PBXBuildFile; productRef = 78BD54CE2ADB6A8100CDEF3D /* StreamChat */; };
 		78BD54D12ADB6A8100CDEF3D /* StreamChatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 78BD54D02ADB6A8100CDEF3D /* StreamChatUI */; };
-		78BD54D32ADB6CFE00CDEF3D /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD54D22ADB6CFE00CDEF3D /* ChatList.swift */; };
+		78BD54D32ADB6CFE00CDEF3D /* ChatsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD54D22ADB6CFE00CDEF3D /* ChatsList.swift */; };
+		78BD54D62ADB72C300CDEF3D /* ListingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD54D42ADB72C300CDEF3D /* ListingDetailView.swift */; };
+		78BD54D72ADB72C300CDEF3D /* ListingMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD54D52ADB72C300CDEF3D /* ListingMarket.swift */; };
+		78BD54D92ADB731300CDEF3D /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD54D82ADB731300CDEF3D /* ListingView.swift */; };
+		78BD54DB2ADB74DB00CDEF3D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BD54DA2ADB74DB00CDEF3D /* EditProfileView.swift */; };
 		F50A2ED222F60C2C00235DAE /* ActivitiesCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */; };
 		F5143EB22301F435008D8C89 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5143EB12301F435008D8C89 /* BlurView.swift */; };
 		F51B590722F4CBD300660704 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51B590622F4CBD300660704 /* SignUpView.swift */; };
@@ -69,7 +73,11 @@
 		786998422ADB31B800541234 /* PaymentOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptions.swift; sourceTree = "<group>"; };
 		786998432ADB31B800541234 /* CreateListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListing.swift; sourceTree = "<group>"; };
 		786998472ADB38FD00541234 /* TermsAndPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndPrivacyView.swift; sourceTree = "<group>"; };
-		78BD54D22ADB6CFE00CDEF3D /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		78BD54D22ADB6CFE00CDEF3D /* ChatsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsList.swift; sourceTree = "<group>"; };
+		78BD54D42ADB72C300CDEF3D /* ListingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailView.swift; sourceTree = "<group>"; };
+		78BD54D52ADB72C300CDEF3D /* ListingMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingMarket.swift; sourceTree = "<group>"; };
+		78BD54D82ADB731300CDEF3D /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
+		78BD54DA2ADB74DB00CDEF3D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCartView.swift; sourceTree = "<group>"; };
 		F5143EB12301F435008D8C89 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		F51B590622F4CBD300660704 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -154,13 +162,17 @@
 				F51B590622F4CBD300660704 /* SignUpView.swift */,
 				786998472ADB38FD00541234 /* TermsAndPrivacyView.swift */,
 				F553995622F4998F00872F1B /* LogInView.swift */,
+				78BD54D42ADB72C300CDEF3D /* ListingDetailView.swift */,
+				78BD54D52ADB72C300CDEF3D /* ListingMarket.swift */,
+				78BD54D82ADB731300CDEF3D /* ListingView.swift */,
 				F52AA7A622F4883A0051F943 /* TabBarView.swift */,
+				78BD54DA2ADB74DB00CDEF3D /* EditProfileView.swift */,
 				F5DDF13822F9EC5A0045277B /* ActivitiesContentView.swift */,
 				F57143C423008A27005F4724 /* PlaceDetailView.swift */,
 				F5143EB12301F435008D8C89 /* BlurView.swift */,
 				F553B7E722FCA19400314585 /* AccountView.swift */,
 				7821E6A32ADB6357006D53CB /* ChatViewController.swift */,
-				78BD54D22ADB6CFE00CDEF3D /* ChatList.swift */,
+				78BD54D22ADB6CFE00CDEF3D /* ChatsList.swift */,
 				F552983422F8BBAE00C07997 /* ActivitiesMockStore.swift */,
 				F50A2ED122F60C2C00235DAE /* ActivitiesCartView.swift */,
 				287368BA2ADA2A380042A486 /* WriteData.swift */,
@@ -347,6 +359,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78BD54D92ADB731300CDEF3D /* ListingView.swift in Sources */,
+				78BD54D62ADB72C300CDEF3D /* ListingDetailView.swift in Sources */,
+				78BD54D72ADB72C300CDEF3D /* ListingMarket.swift in Sources */,
 				786998442ADB31B800541234 /* PHPicker.swift in Sources */,
 				786998452ADB31B800541234 /* PaymentOptions.swift in Sources */,
 				786998462ADB31B800541234 /* CreateListing.swift in Sources */,
@@ -354,7 +369,7 @@
 				F552983522F8BBAE00C07997 /* ActivitiesMockStore.swift in Sources */,
 				287368BD2ADA37C40042A486 /* WriteView.swift in Sources */,
 				F5DDF13922F9EC5B0045277B /* ActivitiesContentView.swift in Sources */,
-				78BD54D32ADB6CFE00CDEF3D /* ChatList.swift in Sources */,
+				78BD54D32ADB6CFE00CDEF3D /* ChatsList.swift in Sources */,
 				786998482ADB38FD00541234 /* TermsAndPrivacyView.swift in Sources */,
 				F542B64922F2DBF200E490A1 /* AppDelegate.swift in Sources */,
 				F542B64B22F2DBF200E490A1 /* SceneDelegate.swift in Sources */,
@@ -367,6 +382,7 @@
 				F57143C523008A28005F4724 /* PlaceDetailView.swift in Sources */,
 				F51B590722F4CBD300660704 /* SignUpView.swift in Sources */,
 				F553B7E822FCA19400314585 /* AccountView.swift in Sources */,
+				78BD54DB2ADB74DB00CDEF3D /* EditProfileView.swift in Sources */,
 				782B76D22ADAA06600ABFF3A /* FirebaseTest.swift in Sources */,
 				F542B64D22F2DBF200E490A1 /* ContentView.swift in Sources */,
 			);
@@ -542,7 +558,7 @@
 				DEVELOPMENT_TEAM = Q98J247HTL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIStarterKitApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,7 +579,7 @@
 				DEVELOPMENT_TEAM = Q98J247HTL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIStarterKitApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

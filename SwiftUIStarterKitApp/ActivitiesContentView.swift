@@ -276,3 +276,4 @@ struct ActivityResourceItems: View {
         }
     }
 }
+

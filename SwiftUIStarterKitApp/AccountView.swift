@@ -13,6 +13,7 @@ struct AccountView: View {
     @State var locationUsage: Bool = false
     @State var username: String = "James"
     @State var selectedCurrency: Int = 0
+    @State public var editProfile = false
 
     let items = Array(1...12) // Example data
 
@@ -23,110 +24,114 @@ struct AccountView: View {
     
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Spacer()
-                Spacer()
-                Spacer()
-                HStack {
-                    Image("italy")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                        .background(Color.yellow)
-                        .clipShape(Circle())
-                        .padding(.bottom, 10)
-                        .padding(.leading, 30)
-                    VStack {
-                        Text("Bob Appleseed")
-                            .font(.system(size: 30))
-                            .padding(.leading, 10)
-                            .padding(.top, 10)
-                        Text("@bobappleseed")
-                            .padding(.leading, 0)
-                            .padding(.bottom, 1)
-                        HStack {
-                            Button("Edit Profile") {
+        NavigationView {
+            ScrollView {
+                VStack {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    HStack {
+                        Image("italy")
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .background(Color.yellow)
+                            .clipShape(Circle())
+                            .padding(.bottom, 10)
+                            .padding(.leading, 30)
+                        VStack {
+                            Text("Bob Appleseed")
+                                .font(.system(size: 30))
+                                .padding(.leading, 10)
+                                .padding(.top, 10)
+                            Text("@bobappleseed")
+                                .padding(.leading, 0)
+                                .padding(.bottom, 1)
+                            
+                            HStack {
+                                
+                                NavigationLink(destination: EditProfileView()) {
+                                    Text("Edit Profile")
+                                        .frame(width: 100, height:20)
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(10)
+                                    
+                                }
+                                Button("Share Profile") {
+                                    
+                                }
+                                .frame(width: 100, height:20)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                                 
                             }
-                            .frame(width: 100, height:20)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            Button("Share Profile") {
-                                
-                            }
-                            .frame(width: 100, height:20)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-
+                            
                         }
-
+                        Spacer()
                     }
-                    Spacer()
-                }
-                HStack {
-                    Text("Seller Rating")
-                        .padding(.leading, 20)
-                        .padding(.top, 10)
-                        .font(.system(size: 20))
-                        .padding(.bottom, 1)
-                    Spacer()
-                }
-                HStack {
-                    RatingView()
-                        .padding(.leading, 40)
-                        .font(.system(size: 20))
-                    Spacer()
-                }
-                
-                HStack {
-                    Text("Bob's Listings")
-                        .padding(.leading, 20)
-                        .font(.system(size: 20))
-                    Spacer()
-                }
+                    HStack {
+                        Text("Seller Rating")
+                            .padding(.leading, 20)
+                            .padding(.top, 10)
+                            .font(.system(size: 20))
+                            .padding(.bottom, 1)
+                        Spacer()
+                    }
+                    HStack {
+                        RatingView()
+                            .padding(.leading, 40)
+                            .font(.system(size: 20))
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Bob's Listings")
+                            .padding(.leading, 20)
+                            .font(.system(size: 20))
+                        Spacer()
+                    }
                     .padding(.top, 5)
                     .padding(.bottom, 0.01)
-                HStack {
-                    Spacer()
-                    Button("Sort List") {
+                    HStack {
+                        Spacer()
+                        Button("Sort List") {
+                            
+                        }
+                        .frame(width: 100, height:20)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(5)
                         
-                    }
-                    .frame(width: 100, height:20)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-
-                    Button("Sort List 2") {
+                        Button("Sort List 2") {
+                            
+                        }
+                        .frame(width: 100, height:20)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(5)
                         
+                        Spacer()
+                        Spacer()
+                        Spacer()
                     }
-                    .frame(width: 100, height:20)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-
-                    Spacer()
-                    Spacer()
-                    Spacer()
+                    
+                    
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
+                        ForEach(items, id: \.self) { item in
+                            Text("\(item)")
+                                .frame(width: 110, height: 110)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding()
                 }
                 
-     
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
-                    ForEach(items, id: \.self) { item in
-                        Text("\(item)")
-                            .frame(width: 110, height: 110)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                }
-                .padding()
+                
+                
             }
-        
-        
-        
-         
          
         }
     }
