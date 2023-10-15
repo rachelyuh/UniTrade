@@ -16,20 +16,11 @@ struct AccountView: View {
     @State public var editProfile = false
 
     let items = Array(1...12) // Example data
-
-    
-    
-    
- 
-    
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Spacer()
-                    Spacer()
-                    Spacer()
                     HStack {
                         Image("italy")
                             .resizable()
@@ -129,11 +120,10 @@ struct AccountView: View {
                     .padding()
                 }
                 
-                
-                
             }
-         
         }
+        .navigationBarTitle("UniTrade")
+        .navigationBarTitleDisplayMode(.inline)
     }
  }
 

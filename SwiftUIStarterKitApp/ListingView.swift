@@ -59,10 +59,12 @@ class ListingSelected: ObservableObject {
 
 struct ListingView: View {
     @EnvironmentObject var settings: UserSettings
+//    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var activtiesData : Listings
     @ObservedObject var selectedActivity = ActivitySelected()
     @State var isShowing: Bool = false
     @State var placeItemSelected: ListingInformation? = nil
+    @State var loggedOut = false
     
     private let twoColumnGrid = [
         GridItem(.flexible(minimum: 150), spacing: 10),
@@ -73,6 +75,27 @@ struct ListingView: View {
     var body: some View {
         GeometryReader { g in
             ScrollView{
+//                NavigationView {
+//                            VStack {
+//                                Text("Welcome to the Main Page")
+//                                    .padding()
+//
+//                                Button(action: {
+//                                    // Perform logout actions here
+//
+//                                    // Dismiss the current view (DetailView) to return to the main page
+//                                    self.presentationMode.wrappedValue.dismiss()
+//                                }) {
+//                                    Text("Logout")
+//                                        .foregroundColor(.white)
+//                                        .padding()
+//                                        .background(Color.blue)
+//                                        .cornerRadius(10)
+//                                }
+//                                .padding()
+//                            }
+//                            .navigationBarTitle("Listings")
+//                        }
                     VStack(alignment: .leading) {
                             HStack (spacing: 10){
                                 ForEach(self.activtiesData.activities, id: \.id) { item in
@@ -130,13 +153,8 @@ struct ListingView: View {
                         }
                         
                     }
-                    .navigationBarTitle("Listings")
-                    .navigationBarItems(trailing:
-                    Button(action: {
-                        self.settings.loggedIn = false
-                    }) {
-                        Text("Log Out")
-                    })
+                    .navigationBarTitle("UniTrade", displayMode: .inline)
+                
             }.sheet(isPresented: self.$isShowing) { ListingDetailView(isShowing: self.$isShowing, placeItem: self.$placeItemSelected)}
         }
     }

@@ -134,14 +134,9 @@ struct SignUpView: View {
                                 showTermsAndPrivacy = true
                             }
                             .padding()
-                            
-                            NavigationLink(
-                                destination: TermsAndPrivacyView(),
-                                isActive: $showTermsAndPrivacy,
-                                label: {
-                                    EmptyView()
-                                }
-                            )
+                            .sheet(isPresented: $showTermsAndPrivacy) {
+                                TermsAndPrivacyView()
+                            }
                         }
                         Text(filledVar)
                             .foregroundColor(.red)

@@ -82,8 +82,10 @@ struct TabbarView: View {
                 }
         }
         .navigationBarBackButtonHidden(true)
-    }
-}
+            }
+        }
+
+
 
 
 struct Previews_TabBarView_Previews: PreviewProvider {
