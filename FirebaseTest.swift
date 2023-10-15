@@ -60,7 +60,8 @@ class FirebaseTest: ObservableObject{
         }
     }
     
-    func getUserData(username: String){
+    func getUserData(username: String, completion: @escaping ([String: Any]?) -> Void){
+    
             // Reference to your Firebase Database
         // Reference to your Firebase Database
         let databaseRef = Database.database().reference()
@@ -68,19 +69,16 @@ class FirebaseTest: ObservableObject{
                 // Reference to the location you want to read from (e.g., a specific node or key)
         let specificRef = databaseRef.child("UserProfiles").child(username)
 
-                // Observe changes in the specified location
-        specificRef.observe(.value) { (snapshot) in
-                    // Check if the snapshot has any data
-            guard let value = snapshot.value as? [String: Any] else {
-                print("No data in this location.")
-                return
+        // Observe changes in the specified location
+        specificRef.observeSingleEvent(of: .value) { snapshot in
+                if let value = snapshot.value as? [String: Any] {
+                    // Successfully retrieved data and cast it to a dictionary
+                    completion(value)
+                } else {
+                    // Data retrieval failed or is not in the expected format
+                    completion(nil)
+                }
             }
-
-                    // Loop through the keys and values and print them
-            for (key, value) in value {
-                print("\(key): \(value)")
-            }
-        }
     }
 
 
