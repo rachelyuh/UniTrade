@@ -17,8 +17,8 @@ struct ListingType {
     var selectedActivity: Bool
 }
 
-struct ListingInformation {
-    var id: Int
+struct ListingInformation : Identifiable {
+    var id = UUID()
     var listingName: String
     var listingDesc: String
     var seller: String

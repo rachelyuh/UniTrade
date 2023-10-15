@@ -30,7 +30,7 @@ struct TabbarView: View {
             }
             
             NavigationView {
-                ListingView(activtiesData: Listings(data: ListingMarket.activityData, items: ListingMarket.listings))
+                SearchView(search: Search(data: ListingMarket.activityData))
             }
             .tag(1)
             .tabItem {
