@@ -29,8 +29,8 @@ class ListingMarket {
                          ListingInformation(id: 2, listingName: "Product 3", listingDesc: "sample description", seller: "abc123", price: 150, image: "snowbird")
             ]),
         ListingData(id: 2, activitiesPlaces:
-                        [ListingInformation(id: 0, listingName: "Photographer", listingDesc: "price rates are variable", seller: "abc123", price: 20, image: "camera"),
-                         ListingInformation(id: 1, listingName: "Service 2", listingDesc: "sample description", seller: "abc123", price: 150, image: "camera"),
-                         ListingInformation(id: 2, listingName: "Service 3", listingDesc: "sample description", seller: "abc123", price: 150, image: "camera")
+                        [ListingInformation(id: 0, listingName: "Photographer", listingDesc: "price rates are variable", seller: "abc123", price: 20, image: "cameras"),
+                         ListingInformation(id: 1, listingName: "Service 2", listingDesc: "sample description", seller: "abc123", price: 150, image: "cameras"),
+                         ListingInformation(id: 2, listingName: "Service 3", listingDesc: "sample description", seller: "abc123", price: 150, image: "cameras")
             ])]
 }

@@ -17,6 +17,7 @@ struct ListingDetailView : View {
     
     var body: some View {
         GeometryReader { g in
+            ScrollView{
             VStack(alignment: .leading) {
                 Text("@" + (self.placeItem?.seller ?? self.defaultPoint.seller)).padding(.leading, 30).padding(.trailing, 30).padding(.top, 30)
                 
@@ -36,8 +37,9 @@ struct ListingDetailView : View {
                         .padding(.bottom, 5)
                         .padding(.leading, 15)
                         .padding(.trailing, 15)
-                
-                Text(self.placeItem?.listingDesc ?? self.defaultPoint.listingName).padding(.leading, 30).padding(.trailing, 30)
+
+                    Text(self.placeItem?.listingDesc ?? self.defaultPoint.listingName).padding(.leading, 30).padding(.trailing, 30)
+                }
             }
         .edgesIgnoringSafeArea(.bottom)
         }
