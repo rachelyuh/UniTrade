@@ -12,6 +12,8 @@ import SwiftUI
 
 struct WriteView: View{
     
+    var globalIdentity: String
+    
     @StateObject
     var viewModel = FirebaseTest()
     
@@ -24,9 +26,9 @@ struct WriteView: View{
                 .frame(width: .infinity, height: 50)
                 .padding()
             Button {
-                //viewModel.readValue(usaname: content)
+                viewModel.getUserData(username: globalIdentity)
             } label: {
-                Text("Push")
+                Text("Get Data")
                     .padding()
             }
 
@@ -36,7 +38,7 @@ struct WriteView: View{
 
 struct Write_Preview: PreviewProvider{
     static var previews: some View{
-        WriteView()
+        WriteView(globalIdentity: "globalIdentity")
     }
     
 }
